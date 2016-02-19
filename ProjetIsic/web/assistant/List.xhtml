@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAssistantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAssistantEmpty}" rendered="#{assistantController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{assistantController.items.rowCount > 0}">
+                    <h:outputText value="#{assistantController.pagination.pageFirstItem + 1}..#{assistantController.pagination.pageLastItem + 1}/#{assistantController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{assistantController.previous}" value="#{bundle.Previous} #{assistantController.pagination.pageSize}" rendered="#{assistantController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{assistantController.next}" value="#{bundle.Next} #{assistantController.pagination.pageSize}" rendered="#{assistantController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{assistantController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_assistantId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.assistantId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_prenom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_adresse}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_abreviation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.abreviation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_domaine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.domaine}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_fonction}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fonction}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_nombreHeureAnnuelle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreHeureAnnuelle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_tauxEngagement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tauxEngagement}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_tauxEnseignement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tauxEnseignement}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_tauxTachesInternes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tauxTachesInternes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAssistantTitle_groupeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.groupeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{assistantController.prepareView}" value="#{bundle.ListAssistantViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{assistantController.prepareEdit}" value="#{bundle.ListAssistantEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{assistantController.destroy}" value="#{bundle.ListAssistantDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{assistantController.prepareCreate}" value="#{bundle.ListAssistantCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAssistantIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

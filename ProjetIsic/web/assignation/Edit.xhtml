@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAssignationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAssignationLabel_assignationId}" for="assignationId" />
+                    <h:inputText id="assignationId" value="#{assignationController.selected.assignationId}" title="#{bundle.EditAssignationTitle_assignationId}" required="true" requiredMessage="#{bundle.EditAssignationRequiredMessage_assignationId}"/>
+                    <h:outputLabel value="#{bundle.EditAssignationLabel_tauxEngagmentProjet}" for="tauxEngagmentProjet" />
+                    <h:inputText id="tauxEngagmentProjet" value="#{assignationController.selected.tauxEngagmentProjet}" title="#{bundle.EditAssignationTitle_tauxEngagmentProjet}" />
+                    <h:outputLabel value="#{bundle.EditAssignationLabel_assistantId}" for="assistantId" />
+                    <h:selectOneMenu id="assistantId" value="#{assignationController.selected.assistantId}" title="#{bundle.EditAssignationTitle_assistantId}" required="true" requiredMessage="#{bundle.EditAssignationRequiredMessage_assistantId}">
+                        <f:selectItems value="#{assistantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAssignationLabel_projetId}" for="projetId" />
+                    <h:selectOneMenu id="projetId" value="#{assignationController.selected.projetId}" title="#{bundle.EditAssignationTitle_projetId}" required="true" requiredMessage="#{bundle.EditAssignationRequiredMessage_projetId}">
+                        <f:selectItems value="#{projetController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{assignationController.update}" value="#{bundle.EditAssignationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAssignationViewLink}"/>
+                <br />
+                <h:commandLink action="#{assignationController.prepareList}" value="#{bundle.EditAssignationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAssignationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

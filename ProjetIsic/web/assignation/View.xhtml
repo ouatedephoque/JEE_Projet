@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAssignationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAssignationLabel_assignationId}"/>
+                    <h:outputText value="#{assignationController.selected.assignationId}" title="#{bundle.ViewAssignationTitle_assignationId}"/>
+                    <h:outputText value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
+                    <h:outputText value="#{assignationController.selected.tauxEngagmentProjet}" title="#{bundle.ViewAssignationTitle_tauxEngagmentProjet}"/>
+                    <h:outputText value="#{bundle.ViewAssignationLabel_assistantId}"/>
+                    <h:outputText value="#{assignationController.selected.assistantId}" title="#{bundle.ViewAssignationTitle_assistantId}"/>
+                    <h:outputText value="#{bundle.ViewAssignationLabel_projetId}"/>
+                    <h:outputText value="#{assignationController.selected.projetId}" title="#{bundle.ViewAssignationTitle_projetId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{assignationController.destroyAndView}" value="#{bundle.ViewAssignationDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAssignationEditLink}"/>
+                <br />
+                <h:commandLink action="#{assignationController.prepareCreate}" value="#{bundle.ViewAssignationCreateLink}" />
+                <br />
+                <h:commandLink action="#{assignationController.prepareList}" value="#{bundle.ViewAssignationShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAssignationIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

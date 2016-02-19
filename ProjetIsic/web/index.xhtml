@@ -8,9 +8,10 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>ISIC - Planning</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        
+
         <!-- Navbar goes here -->
         <nav>
             <div class="nav-wrapper grey darken-3">
@@ -26,10 +27,23 @@
         <!-- Page Layout here -->
         <div class="row">
 
-        
+            <div class="col s4">
+                <!-- Promo Content 1 goes here -->
+                Promo 1
+            </div>
+
+            <div class="col s4">
+                <!-- Promo Content 2 goes here -->
+                Promo 2
+            </div>
+
+            <div class="col s4">
+                <!-- Promo Content 3 goes here -->
+                Promo 3
+            </div>
 
         </div>
-        
+
         <footer class="page-footer grey darken-3">
             <div class="container">
                 <div class="row">
@@ -37,7 +51,7 @@
                         <h5 class="white-text">Footer Content</h5>
                         <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
                     </div>
-                    
+
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
@@ -49,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-copyright">
                 <div class="container">
                     © 2014 Copyright Text
@@ -57,11 +71,23 @@
                 </div>
             </div>
         </footer>
-        
-        
+
+
         <!-- Importer à la fin : Framework CSS Materialize-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
+        <br />
+        <h:link outcome="/assignation/List" value="Show All Assignation Items"/>
+        <br />
+        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <br />
+        <h:link outcome="/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
+        <br />
+        <h:link outcome="/projet/List" value="Show All Projet Items"/>
     </h:body>
+
+
+
+
 </html>
 

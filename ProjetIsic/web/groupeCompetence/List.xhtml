@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGroupeCompetenceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListGroupeCompetenceEmpty}" rendered="#{groupeCompetenceController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{groupeCompetenceController.items.rowCount > 0}">
+                    <h:outputText value="#{groupeCompetenceController.pagination.pageFirstItem + 1}..#{groupeCompetenceController.pagination.pageLastItem + 1}/#{groupeCompetenceController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{groupeCompetenceController.previous}" value="#{bundle.Previous} #{groupeCompetenceController.pagination.pageSize}" rendered="#{groupeCompetenceController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{groupeCompetenceController.next}" value="#{bundle.Next} #{groupeCompetenceController.pagination.pageSize}" rendered="#{groupeCompetenceController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{groupeCompetenceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGroupeCompetenceTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGroupeCompetenceTitle_acronyme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acronyme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGroupeCompetenceTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{groupeCompetenceController.prepareView}" value="#{bundle.ListGroupeCompetenceViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{groupeCompetenceController.prepareEdit}" value="#{bundle.ListGroupeCompetenceEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{groupeCompetenceController.destroy}" value="#{bundle.ListGroupeCompetenceDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{groupeCompetenceController.prepareCreate}" value="#{bundle.ListGroupeCompetenceCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListGroupeCompetenceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

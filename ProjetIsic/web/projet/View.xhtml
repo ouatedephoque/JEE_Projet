@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProjetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProjetLabel_projetId}"/>
+                    <h:outputText value="#{projetController.selected.projetId}" title="#{bundle.ViewProjetTitle_projetId}"/>
+                    <h:outputText value="#{bundle.ViewProjetLabel_nom}"/>
+                    <h:outputText value="#{projetController.selected.nom}" title="#{bundle.ViewProjetTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewProjetLabel_sagex}"/>
+                    <h:outputText value="#{projetController.selected.sagex}" title="#{bundle.ViewProjetTitle_sagex}"/>
+                    <h:outputText value="#{bundle.ViewProjetLabel_dateDebut}"/>
+                    <h:outputText value="#{projetController.selected.dateDebut}" title="#{bundle.ViewProjetTitle_dateDebut}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProjetLabel_dateFin}"/>
+                    <h:outputText value="#{projetController.selected.dateFin}" title="#{bundle.ViewProjetTitle_dateFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProjetLabel_tarifHoraireAssistant}"/>
+                    <h:outputText value="#{projetController.selected.tarifHoraireAssistant}" title="#{bundle.ViewProjetTitle_tarifHoraireAssistant}"/>
+                    <h:outputText value="#{bundle.ViewProjetLabel_tarifHoraireAdjoint}"/>
+                    <h:outputText value="#{projetController.selected.tarifHoraireAdjoint}" title="#{bundle.ViewProjetTitle_tarifHoraireAdjoint}"/>
+                    <h:outputText value="#{bundle.ViewProjetLabel_budget}"/>
+                    <h:outputText value="#{projetController.selected.budget}" title="#{bundle.ViewProjetTitle_budget}"/>
+                    <h:outputText value="#{bundle.ViewProjetLabel_chef}"/>
+                    <h:outputText value="#{projetController.selected.chef}" title="#{bundle.ViewProjetTitle_chef}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProjetEditLink}"/>
+                <br />
+                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ViewProjetCreateLink}" />
+                <br />
+                <h:commandLink action="#{projetController.prepareList}" value="#{bundle.ViewProjetShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProjetIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

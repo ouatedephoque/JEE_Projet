@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProjetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProjetEmpty}" rendered="#{projetController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{projetController.items.rowCount > 0}">
+                    <h:outputText value="#{projetController.pagination.pageFirstItem + 1}..#{projetController.pagination.pageLastItem + 1}/#{projetController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{projetController.previous}" value="#{bundle.Previous} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{projetController.next}" value="#{bundle.Next} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{projetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_projetId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.projetId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_sagex}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sagex}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_dateDebut}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDebut}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_dateFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAssistant}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarifHoraireAssistant}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAdjoint}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarifHoraireAdjoint}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_budget}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.budget}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_chef}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chef}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{projetController.prepareView}" value="#{bundle.ListProjetViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{projetController.prepareEdit}" value="#{bundle.ListProjetEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{projetController.destroy}" value="#{bundle.ListProjetDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ListProjetCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProjetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
