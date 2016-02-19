@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
-
+    	<h:outputStylesheet library="css" name="materialize.min.css"  />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>ISIC - Planning</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
 
@@ -25,7 +24,7 @@
         </nav>
 
         <!-- Page Layout here -->
-        <div class="row">
+        <h:body>
 
             <div class="col s4">
                 <!-- Promo Content 1 goes here -->
@@ -33,8 +32,7 @@
             </div>
 
             <div class="col s4">
-                <!-- Promo Content 2 goes here -->
-                Promo 2
+                <ui:insert name="body">Default Body</ui:insert>
             </div>
 
             <div class="col s4">
@@ -42,7 +40,7 @@
                 Promo 3
             </div>
 
-        </div>
+        </h:body>
 
         <footer class="page-footer grey darken-3">
             <div class="container">
