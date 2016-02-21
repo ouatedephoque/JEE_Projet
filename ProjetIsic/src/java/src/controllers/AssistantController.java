@@ -6,6 +6,7 @@ import src.controllers.util.PaginationHelper;
 import src.facades.AssistantFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
