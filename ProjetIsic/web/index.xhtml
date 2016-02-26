@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    	<h:outputStylesheet library="css" name="materialize.min.css"  />
+        <h:outputStylesheet library="css" name="materialize.min.css"  />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>ISIC - Planning</title>
     </h:head>
@@ -18,33 +18,32 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
                     <li><h:outputLink value="myProjects.html">Mes projets</h:outputLink></li>
-                    <li><a href="projects.html">Gestion des projet</a></li>
-                    <li><a href="profile.html">Mon profil</a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="myProjects.html">Mes projets</a></li>
-                    <li><a href="projects.html">Gestion des projetd</a></li>
-                    <li><a href="profile.html">Mon profil</a></li>
-                </ul>
-            </div>
-        </nav>
-        
+                        <li><a href="projects.html">Gestion des projet</a></li>
+                        <li><a href="profile.html">Mon profil</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="myProjects.html">Mes projets</a></li>
+                        <li><a href="projects.html">Gestion des projetd</a></li>
+                        <li><a href="profile.html">Mon profil</a></li>
+                    </ul>
+                </div>
+            </nav>
 
-        <!-- Page Layout here -->
+
+            <!-- Page Layout here -->
         <h:body>
 
             <div class="col s4">
                 <ui:insert name="side_body_left"></ui:insert>
-            </div>
+                </div>
 
-            <div class="col s4">
+                <div class="col s4">
                 <ui:insert name="body">Default Body</ui:insert>
-            </div>
+                </div>
 
-            <div class="col s4">
+                <div class="col s4">
                 <ui:insert name="side_body_right"></ui:insert>
-            </div>
-
+                </div>
         </h:body>
 
         <footer class="page-footer pink">
@@ -79,7 +78,22 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <h:outputScript library="js" name="materialize.js" />
         <h:outputScript library="js" name="materialize.min.js" />
+        <br />
+        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <br />
+        <h:link outcome="/assignation/List" value="Show All Assignation Items"/>
+        <br />
+        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <br />
+        <h:link outcome="/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
+        <br />
+        <h:link outcome="/projet/List" value="Show All Projet Items"/>
     </h:body>
+
+
+
+
+
 
 
 

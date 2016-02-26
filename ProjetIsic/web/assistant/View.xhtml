@@ -23,8 +23,8 @@
                         <h:outputText value="#{bundle.ListAssistantTitle_adresse} : "/>
                         <h:outputText value="#{assistantController.selected.adresse}" title="#{bundle.ViewAssistantTitle_adresse}"/>
                         
-                        <h:outputText value="Téléphone" />
-                        <h:outputText value="" title="" />
+                        <h:outputText value="#{bundle.ListAssistantTitle_email}" />
+                        <h:outputText value="#{assistantController.selected.email}" title="#{bundle.ViewAssistantLabel_email}" />
                         
                         <h:outputText value="#{bundle.ListAssistantTitle_domaine} : "/>
                         <h:outputText value="#{assistantController.selected.domaine}" title="#{bundle.ViewAssistantTitle_domaine}"/>
@@ -48,35 +48,6 @@
                     </h:panelGrid>
                 </h:form>
             </section>
-            <!--<h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAssistantLabel_assistantId}"/>
-                    <h:outputText value="#{assistantController.selected.assistantId}" title="#{bundle.ViewAssistantTitle_assistantId}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_nom}"/>
-                    <h:outputText value="#{assistantController.selected.nom}" title="#{bundle.ViewAssistantTitle_nom}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_prenom}"/>
-                    <h:outputText value="#{assistantController.selected.prenom}" title="#{bundle.ViewAssistantTitle_prenom}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_adresse}"/>
-                    <h:outputText value="#{assistantController.selected.adresse}" title="#{bundle.ViewAssistantTitle_adresse}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_abreviation}"/>
-                    <h:outputText value="#{assistantController.selected.abreviation}" title="#{bundle.ViewAssistantTitle_abreviation}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_domaine}"/>
-                    <h:outputText value="#{assistantController.selected.domaine}" title="#{bundle.ViewAssistantTitle_domaine}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_fonction}"/>
-                    <h:outputText value="#{assistantController.selected.fonction}" title="#{bundle.ViewAssistantTitle_fonction}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_nombreHeureAnnuelle}"/>
-                    <h:outputText value="#{assistantController.selected.nombreHeureAnnuelle}" title="#{bundle.ViewAssistantTitle_nombreHeureAnnuelle}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_tauxEngagement}"/>
-                    <h:outputText value="#{assistantController.selected.tauxEngagement}" title="#{bundle.ViewAssistantTitle_tauxEngagement}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_tauxEnseignement}"/>
-                    <h:outputText value="#{assistantController.selected.tauxEnseignement}" title="#{bundle.ViewAssistantTitle_tauxEnseignement}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_tauxTachesInternes}"/>
-                    <h:outputText value="#{assistantController.selected.tauxTachesInternes}" title="#{bundle.ViewAssistantTitle_tauxTachesInternes}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_groupeId}"/>
-                    <h:outputText value="#{assistantController.selected.groupeId}" title="#{bundle.ViewAssistantTitle_groupeId}"/>
-                </h:panelGrid>
-
-            </h:form>-->
         </ui:define>
     </ui:composition>
 
