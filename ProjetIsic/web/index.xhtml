@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    	<h:outputStylesheet library="css" name="materialize.min.css"  />
+        <h:outputStylesheet library="css" name="materialize.min.css"  />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>ISIC - Planning</title>
     </h:head>
@@ -30,23 +30,21 @@
         </nav>
         
 
-        <!-- Page Layout here -->
+
+            <!-- Page Layout here -->
         <h:body>
 
             <div class="col s4">
-                <!-- Promo Content 1 goes here -->
-                Promo 1
-            </div>
+                <ui:insert name="side_body_left"></ui:insert>
+                </div>
 
-            <div class="col s4">
+                <div class="col s4">
                 <ui:insert name="body">Default Body</ui:insert>
-            </div>
+                </div>
 
-            <div class="col s4">
-                <!-- Promo Content 3 goes here -->
-                Promo 3
-            </div>
-
+                <div class="col s4">
+                <ui:insert name="side_body_right"></ui:insert>
+                </div>
         </h:body>
 
         <footer class="page-footer pink">
@@ -78,8 +76,10 @@
 
         <!-- Importer à la fin : Framework CSS Materialize-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <h:outputScript library="js" name="materialize.js" />
+        <h:outputScript library="js" name="materialize.min.js" />
+        <br />
+        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
         <br />
         <h:link outcome="/assignation/List" value="Show All Assignation Items"/>
         <br />
@@ -89,6 +89,11 @@
         <br />
         <h:link outcome="/projet/List" value="Show All Projet Items"/>
     </h:body>
+
+
+
+
+
 
 
 
