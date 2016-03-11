@@ -20,14 +20,14 @@
                         <h:outputText value="Nom et prénom : "/>
                         <h:outputText value="#{assistantController.selected.nom.concat(' ').concat(assistantController.selected.prenom)}"/>
                         
-                        <h:outputText value="#{bundle.ListAssistantTitle_adresse} : "/>
+                        <h:outputText value="#{bundle.ViewAssistantLabel_adresse}"/>
                         <h:outputText value="#{assistantController.selected.adresse}" title="#{bundle.ViewAssistantTitle_adresse}"/>
                         
-                        <h:outputText value="#{bundle.ListAssistantTitle_email}" />
-                        <h:outputText value="#{assistantController.selected.email}" title="#{bundle.ViewAssistantLabel_email}" />
+                        <h:outputText value="#{bundle.ViewAssistantLabel_email}" />
+                        <h:outputText value="#{assistantController.selected.email}" title="#{bundle.ViewAssistantTitle_email}" />
                         
-                        <h:outputText value="#{bundle.ListAssistantTitle_domaine} : "/>
-                        <h:outputText value="#{assistantController.selected.domaine}" title="#{bundle.ViewAssistantTitle_domaine}"/>
+                        <h:outputText value="#{bundle.ViewAssistantLabel_groupeId}"/>
+                        <h:outputText value="#{assistantController.selected.groupeId.nom}" title="#{bundle.ViewAssistantTitle_groupeId}"/>
                     </h:panelGrid>
                     
                     <h:panelGrid columns="2" class="col s4">
@@ -36,7 +36,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListProjetTitle_nom}"/>
                                 </f:facet>
-                                <h:commandLink action="#{projetController.prepareView}" value="#{item.projetId.nom}"/>
+                                <h:commandLink action="#{assignationController.prepareView}" value="#{item.projetId.nom}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
