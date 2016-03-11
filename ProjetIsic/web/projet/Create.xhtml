@@ -39,13 +39,10 @@
                     <h:inputText id="chef" value="#{projetController.selected.chef}" title="#{bundle.CreateProjetTitle_chef}" />
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{projetController.create}" value="#{bundle.CreateProjetSaveLink}" />
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.create}" value="#{bundle.CreateProjetSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{projetController.prepareList}" value="#{bundle.CreateProjetShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateProjetIndexLink}"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.prepareList}" value="#{bundle.CreateProjetShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>

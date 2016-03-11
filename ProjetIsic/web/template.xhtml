@@ -1,22 +1,89 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title><ui:insert name="title">Default Title</ui:insert></title>
-        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <h:outputStylesheet library="css" name="materialize.min.css"  />
+
+        <title>HE-Arc Ing. - Planning</title>
     </h:head>
 
     <h:body>
-        <h1>
-            <ui:insert name="title">Default Title</ui:insert>
-        </h1>
-        <p>
-            <ui:insert name="body">Default Body</ui:insert>
-        </p>
+        <!-- Navbar goes here -->
+        <nav class="pink">
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo right"><h:graphicImage library="images" value="isic.gif" /></a>
+                <ul class="left hide-on-med-and-down">
+                    <li><h:link outcome="/index" value="Acceuil"/></li>
+                    <li><h:link outcome="/projet/ListMine" value="Mes projets"/></li>
+                    <li><h:link outcome="/projet/List" value="Gestion des projets"/></li>
+                    <li><h:link outcome="/assistant/List" value="Mon profil"/></li>
+                </ul>
+                <ul class="side-nav" id="mobile-nav">
+                    <li><h:link outcome="/index" value="Acceuil"/></li>
+                    <li><h:link outcome="/projet/List" value="Mes projets"/></li>
+                    <li><h:link outcome="/projet/List" value="Gestion des projets"/></li>
+                    <li><h:link outcome="/assistant/List" value="Mon profil"/></li>
+                </ul>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <div class="section">
+                
+                <ui:insert name="body">Default Body</ui:insert>
+                
+            </div>
+        </div>
+        
+        <footer class="page-footer pink">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">HE-Arc Ing. Planning</h5>
+                        <p class="grey-text text-lighten-4">Ici le texte de footer</p>
+                    </div>
+
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Plan du site</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="index.html">Accueil</a></li>
+                            <li><a class="grey-text text-lighten-3" href="myProjects.html">Mes projets</a></li>
+                            <li><a class="grey-text text-lighten-3" href="projects.html">Gestion des projets</a></li>
+                            <li><a class="grey-text text-lighten-3" href="profile.html">Mon profil</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Di Stasio Leonardo &amp; Assunçao Jeshon | <a class="grey-text text-lighten-4" href="http://materializecss.com/" target="_blank">Design Materialize</a>
+                </div>
+            </div>
+        </footer>        
+        
+        <!-- Importer à la fin : Framework CSS Materialize-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <h:outputScript library="js" name="materialize.js" />
+        <h:outputScript library="js" name="materialize.min.js" />
+        <br />
+        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <br />
+        <h:link outcome="/assignation/List" value="Show All Assignation Items"/>
+        <br />
+        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <br />
+        <h:link outcome="/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
+        <br />
+        <h:link outcome="/projet/List" value="Show All Projet Items"/>
     </h:body>
 
 </html>
