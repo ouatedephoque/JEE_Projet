@@ -1,116 +1,37 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<<<<<<< HEAD
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:composition template="/template.xhtml">
-        
-        <!-- Page Layout here -->
         <ui:define name="body">
-            <div class="row">
-                <div class="col s12 m4 l4">
-                    <div class="icon-block">
-                        <h:link outcome="projet/List">
-                            <h2 class="center pink-text"><i class="large material-icons">list</i></h2>
-                            <h5 class="center black-text">Tous les projets</h5>
-
-                            <p class="light black-text">Retrouvez ici la liste de tous les projets en cours dans votre département.</p>
-                        </h:link>
-                    </div>
-=======
-    <h:head>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <h:outputStylesheet library="css" name="materialize.min.css"  />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>ISIC - Planning</title>
-    </h:head>
-    <h:body>
-
-        <!-- Navbar goes here -->
-        <nav class="pink">
-            <div class="nav-wrapper">
-                <a href="index.xhtml" class="brand-logo right"><h:graphicImage library="images" value="isic.gif" /></a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="left hide-on-med-and-down">
-                    <li><h:outputLink value="myProjects.html">Mes projets</h:outputLink></li>
-                    <li><a href="projects.html">Gestion des projets</a></li>
-                    <li><a href="profile.html">Mon profil</a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="myProjects.html">Mes projets</a></li>
-                    <li><a href="projects.html">Gestion des projets</a></li>
-                    <li><a href="profile.html">Mon profil</a></li>
-                </ul>
-            </div>
-        </nav>
-            <!-- Page Layout here -->
-        <h:body>
-
             <div class="col s4">
                 <ui:insert name="side_body_left"></ui:insert>
->>>>>>> eaaf6515baecbcea8d8a0d421271c6876a546474
+            </div>
+
+            <div class="col s12 m4 l4">
+                <div class="icon-block">
+                    <h:link outcome="projet/ListMine">
+                        <h2 class="center pink-text"><i class="large material-icons">assignment</i></h2>
+                        <h5 class="center black-text">Mes projets</h5>
+
+                        <p class="light black-text">Retrouvez ici la liste de tous les projets qui vous sont assignés ou qui vous ont été assignés par le passé.</p>
+                    </h:link>
                 </div>
+            </div>
 
-                <div class="col s12 m4 l4">
-                    <div class="icon-block">
-                        <h:link outcome="projet/ListMine">
-                            <h2 class="center pink-text"><i class="large material-icons">assignment</i></h2>
-                            <h5 class="center black-text">Mes projets</h5>
+            <div class="col s12 m4 l4">
+                <div class="icon-block">
+                    <h:link outcome="assistant/List">
+                        <h2 class="center pink-text"><i class="large material-icons">perm_identity</i></h2>
+                        <h5 class="center black-text">Profil</h5>
 
-                            <p class="light black-text">Retrouvez ici la liste de tous les projets qui vous sont assignés ou qui vous ont été assignés par le passé.</p>
-                        </h:link>
-                    </div>
+                        <p class="light black-text">Vous pouvez ici modifier vos informations personnelles</p>
+                    </h:link>
                 </div>
-
-                <div class="col s12 m4 l4">
-                    <div class="icon-block">
-                        <h:link outcome="assistant/List">
-                            <h2 class="center pink-text"><i class="large material-icons">perm_identity</i></h2>
-                            <h5 class="center black-text">Profil</h5>
-
-                            <p class="light black-text">Vous pouvez ici modifier vos informations personnelles</p>
-                        </h:link>
-                    </div>
-                </div>
-<<<<<<< HEAD
-            </div>    
+            </div> 
         </ui:define>
-        
     </ui:composition>
-=======
-            </div>
-
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2016 Di Stasio Leonardo &amp; Assunçao Jeshon | <a class="grey-text text-lighten-4 right" href="http://materializecss.com/">Design Materialize</a>
-                </div>
-            </div>
-        </footer>
-
-
-        <!-- Importer à la fin : Framework CSS Materialize-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <h:outputScript library="js" name="materialize.js" />
-        <h:outputScript library="js" name="materialize.min.js" />
-        <br />
-        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
-        <br />
-        <h:link outcome="/assignation/List" value="Show All Assignation Items"/>
-        <br />
-        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
-        <br />
-        <h:link outcome="/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
-        <br />
-        <h:link outcome="/projet/List" value="Show All Projet Items"/>
-    
-        <script>
-            $(document).ready(function() {
-                $('select').material_select();
-            });
-        </script>
-    </h:body>
->>>>>>> eaaf6515baecbcea8d8a0d421271c6876a546474
 </html>
-
