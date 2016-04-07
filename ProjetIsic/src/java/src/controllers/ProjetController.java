@@ -28,6 +28,7 @@ public class ProjetController implements Serializable {
     private src.facades.ProjetFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Projet selectedProjetAssign;
 
     public ProjetController() {
     }
@@ -226,6 +227,14 @@ public class ProjetController implements Serializable {
             }
         }
 
+    }
+
+    public Projet getSelectedProjetAssign() {
+        return selectedProjetAssign;
+    }
+
+    public void setSelectedProjetAssign(Projet selectedProjetAssign) {
+        this.selectedProjetAssign = selectedProjetAssign;
     }
 
 }

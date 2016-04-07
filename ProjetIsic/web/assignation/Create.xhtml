@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <ui:composition template="/index.xhtml">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.CreateAssignationTitle}"></h:outputText>
+            <h:outputText value="#{bundle.ViewAssignationTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -15,29 +16,103 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAssignationLabel_assignationId}" for="assignationId" />
-                    <h:inputText id="assignationId" value="#{assignationController.selected.assignationId}" title="#{bundle.CreateAssignationTitle_assignationId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_assignationId}"/>
-                    <h:outputLabel value="#{bundle.CreateAssignationLabel_tauxEngagmentProjet}" for="tauxEngagmentProjet" />
-                    <h:inputText id="tauxEngagmentProjet" value="#{assignationController.selected.tauxEngagmentProjet}" title="#{bundle.CreateAssignationTitle_tauxEngagmentProjet}" />
-                    <h:outputLabel value="#{bundle.CreateAssignationLabel_assistantId}" for="assistantId" />
-                    <h:selectOneMenu id="assistantId" value="#{assignationController.selected.assistantId}" title="#{bundle.CreateAssignationTitle_assistantId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_assistantId}">
-                        <f:selectItems value="#{assistantController.itemsAvailableSelectOne}"/>
+                    <h:outputLabel for="groupeCompet" value="#{bundle.GroupeCompetenceName}" />
+                    <h:selectOneMenu id="groupeCompet" 
+                                     converter="#{groupeCompetenceController}"
+                                     value="#{groupeCompetenceController.selectedGroupeCompetence}">
+                        
+                        <f:selectItems value="#{groupeCompetenceController.items}" 
+                                       var="gc" itemLabel="#{gc.acronyme}" 
+                                       itemValue="#{gc}" />
+                        
+                        <f:ajax event="change"
+                                render="selectAssistant"
+                                execute="@this"
+                                listener="#{groupeCompetenceController.groupeCompetenceChanged}" />
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateAssignationLabel_projetId}" for="projetId" />
-                    <h:selectOneMenu id="projetId" value="#{assignationController.selected.projetId}" title="#{bundle.CreateAssignationTitle_projetId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_projetId}">
-                        <f:selectItems value="#{projetController.itemsAvailableSelectOne}"/>
+                    
+                    <h:outputLabel value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
+                    <h:selectOneMenu value="#{groupeCompetenceController.pourcentSelect}">
+                        
+                        <f:selectItems value="#{groupeCompetenceController.pourcentsToSelect}"
+                                       var="i" itemLabel="#{i}%" itemValue="#{i}" />
+                        
+                        <f:ajax event="change"
+                                render="selectAssistant"
+                                execute="@this"
+                                listener="#{groupeCompetenceController.pourcentChanged}" />
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <br />
-                <h:commandLink action="#{assignationController.create}" value="#{bundle.CreateAssignationSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{assignationController.prepareList}" value="#{bundle.CreateAssignationShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAssignationIndexLink}"/>
+                
+                <br/><br/>
+                <div class="row">
+                    <article class='col s4'>
+                        <h:selectOneMenu id="selectAssistant" 
+                                         required="true" 
+                                         converter="#{assistantController}"
+                                         value="#{assignationController.selected.assistantId}">
+                            
+                            <f:selectItems value="#{groupeCompetenceController.listAssistantCompetent}"
+                                           var='ac' itemLabel="#{ac.nom} #{ac.prenom}   |    #{ac.tauxEngagement}%" 
+                                           itemValue="#{ac}" />
+                        
+                            <f:ajax event="change"
+                                    render="assistantSelect" />
+                        </h:selectOneMenu>
+                    </article>
+                    
+                    <article class='input-field col s4'>
+                        <h:inputText id="tauxEngagmentProjet" value="#{assignationController.selected.tauxEngagmentProjet}" title="#{bundle.CreateAssignationTitle_tauxEngagmentProjet}" />
+                        <h:outputLabel value="#{bundle.CreateAssignationLabel_tauxEngagmentProjet}" for="tauxEngagmentProjet" />
+                        <h:commandLink class="waves-effect waves-light btn col s12" action="#{assignationController.create}" value="#{bundle.CreateAssistantSaveLink}" />
+                    </article>
+                    
+                    <article class='col s4'>
+                        <h:selectOneMenu value="#{assignationController.selected.projetId}">
+                            <f:selectItems value="#{projetController.items}" 
+                                           var="pc" itemLabel="#{pc.nom}" 
+                                           itemValue="#{pc}" />
+                        </h:selectOneMenu>
+                    </article>
+                    
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>
+
+    <!--<ui:composition template="/index.xhtml">
+        <ui:define name="title">
+            <h:outputText value="{bundle.CreateAssignationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="{bundle.CreateAssignationLabel_assignationId}" for="assignationId" />
+                    <h:inputText id="assignationId" value="{assignationController.selected.assignationId}" title="{bundle.CreateAssignationTitle_assignationId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_assignationId}"/>
+                    <h:outputLabel value="{bundle.CreateAssignationLabel_tauxEngagmentProjet}" for="tauxEngagmentProjet" />
+                    <h:inputText id="tauxEngagmentProjet" value="{assignationController.selected.tauxEngagmentProjet}" title="{bundle.CreateAssignationTitle_tauxEngagmentProjet}" />
+                    <h:outputLabel value="{bundle.CreateAssignationLabel_assistantId}" for="assistantId" />
+                    <h:selectOneMenu id="assistantId" value="{assignationController.selected.assistantId}" title="{bundle.CreateAssignationTitle_assistantId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_assistantId}">
+                        <f:selectItems value="{assistantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="{bundle.CreateAssignationLabel_projetId}" for="projetId" />
+                    <h:selectOneMenu id="projetId" value="{assignationController.selected.projetId}" title="{bundle.CreateAssignationTitle_projetId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_projetId}">
+                        <f:selectItems value="{projetController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="{assignationController.create}" value="{bundle.CreateAssignationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="{assignationController.prepareList}" value="{bundle.CreateAssignationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="{bundle.CreateAssignationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>-->
 
 </html>

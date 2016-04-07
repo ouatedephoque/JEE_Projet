@@ -1,26 +1,38 @@
 package src.controllers;
 
+import java.io.IOException;
 import src.entities.GroupeCompetence;
 import src.controllers.util.JsfUtil;
 import src.controllers.util.PaginationHelper;
 import src.facades.GroupeCompetenceFacade;
 
 import java.io.Serializable;
+import java.time.Clock;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
+import src.entities.Assistant;
 
 @ManagedBean(name = "groupeCompetenceController")
 @SessionScoped
-public class GroupeCompetenceController implements Serializable {
+public class GroupeCompetenceController implements Serializable, Converter {
 
     private GroupeCompetence current;
     private DataModel items = null;
@@ -28,8 +40,15 @@ public class GroupeCompetenceController implements Serializable {
     private src.facades.GroupeCompetenceFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    
+    private List<Assistant> listAssistantCompetent;
+    private GroupeCompetence selectedGroupeCompetence;
+    private int pourcentSelect;
+    private List<Integer> pourcentsToSelect;
 
-    public GroupeCompetenceController() {
+    public GroupeCompetenceController() 
+    {
+        this.pourcentSelect = -1;
     }
 
     public GroupeCompetence getSelected() {
@@ -180,12 +199,48 @@ public class GroupeCompetenceController implements Serializable {
         return "List";
     }
 
+    public GroupeCompetence getSelectedGroupeCompetence() {
+        return selectedGroupeCompetence;
+    }
+
+    public void setSelectedGroupeCompetence(GroupeCompetence selectedGroupeCompetence) {
+        this.selectedGroupeCompetence = selectedGroupeCompetence;
+    }
+
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }
+
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) 
+    {
+        if (value == null || !value.matches("\\d+")) {
+            return null;
+        }
+
+        GroupeCompetence groupeCompetence = ejbFacade.find(Integer.valueOf(value));
+
+        if (groupeCompetence == null) 
+        {
+            throw new ConverterException(new FacesMessage("Unknown operation ID: " + value));
+        }
+
+        return groupeCompetence;
+    }
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) 
+    {
+        if (!(value instanceof GroupeCompetence) || ((GroupeCompetence) value).getId() == null) 
+        {
+            return null;
+        }
+
+        return String.valueOf(((GroupeCompetence) value).getId());
     }
 
     @FacesConverter(forClass = GroupeCompetence.class)
@@ -226,6 +281,63 @@ public class GroupeCompetenceController implements Serializable {
             }
         }
 
+    }
+    
+    public void groupeCompetenceChanged(AjaxBehaviorEvent event) throws IOException
+    {
+        int pourcent = 100;
+        if(this.pourcentSelect != -1)
+        {
+            pourcent = pourcentSelect;
+        }
+        this.listAssistantCompetent = ejbFacade.getAllAssistantByGroupAndPourcent(selectedGroupeCompetence, pourcent);
+        
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+    }
+    
+    public void pourcentChanged(AjaxBehaviorEvent event) throws IOException
+    {
+        if(this.listAssistantCompetent == null || this.listAssistantCompetent.size() <= 0)
+        {
+            this.listAssistantCompetent = ejbFacade.getAllAssistantByPourcent(pourcentSelect);
+        }
+        else
+        {
+            this.listAssistantCompetent = ejbFacade.getAllAssistantByGroupAndPourcent(selectedGroupeCompetence, pourcentSelect);
+        }
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+    }
+    
+    public List<Assistant> getListAssistantCompetent()
+    {
+        return this.listAssistantCompetent;
+    }
+
+    public int getPourcentSelect() {
+        return pourcentSelect;
+    }
+
+    public void setPourcentSelect(int pourcentSelect) {
+        this.pourcentSelect = pourcentSelect;
+    }
+
+    public List<Integer> getPourcentsToSelect() 
+    {
+        if(pourcentsToSelect == null)
+        {
+            this.pourcentsToSelect = new ArrayList<>(10);
+            for(int i = 10; i <= 100; i += 10)
+            {
+                this.pourcentsToSelect.add(i);
+            }
+        }
+        return pourcentsToSelect;
+    }
+
+    public void setPourcentsToSelect(List<Integer> pourcentsToSelect) {
+        this.pourcentsToSelect = pourcentsToSelect;
     }
 
 }

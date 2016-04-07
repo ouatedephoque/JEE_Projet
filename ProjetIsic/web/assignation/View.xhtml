@@ -6,58 +6,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <ui:composition template="/index.xhtml">
+    <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewAssignationTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel for="groupeCompet" value="#{bundle.GroupeCompetenceName}" />
-                    <h:selectOneMenu id="groupeCompet" value="#{groupeCompetenceController.items}">
-                        <f:selectItems value="#{groupeCompetenceController.items}" 
-                                       var="gc" itemLabel="#{gc.acronyme}" 
-                                       itemValue="#{gc.acronyme}" />
-                    </h:selectOneMenu>
-                    
-                    <h:outputLabel for="tauxOccupation" value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
-                    <h:selectOneMenu>
-                        <!--<c:forEach var="i" begin="0" end="100" step="5" varStatus="loop">
-                            <f:selectItem value="" itemValue="" itemLabel="" />
-                        </c:forEach>-->
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                
-                <br/><br/>
-                <div class="row">
-                    <article class='col s4'>
-                        <h:selectOneMenu value="#{assistantController.items}">
-                            <f:selectItems value="#{assistantController.items}"
-                                           var='ac' itemLabel="#{ac.nom} #{ac.prenom}   |    #{ac.tauxEngagement}%" 
-                                           itemValue="#{ac.assistantId}" />
-                            <f:ajax render='assistantSelect' />
-                        </h:selectOneMenu>
-                    </article>
-                    
-                    <article class='col s4'>
-                        <h:inputText id="assistantSelect" />
-                        <h:inputText id="groupeCompetenceSelect" />
-                        <h:commandLink class="waves-effect waves-light btn col s12" action="#{assistantController.create}" value="#{bundle.CreateAssistantSaveLink}" />
-                    </article>
-                    
-                    <article class='col s4'>
-                        <h:selectOneMenu value="#{projetController.items}">
-                            <f:selectItems value="#{projetController.items}" 
-                                           var="pc" itemLabel="#{pc.nom}" 
-                                           itemValue="#{pc.projetId}" />
-                        </h:selectOneMenu>
-                    </article>
-                    
-                </div>
-                <!--<h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewAssignationLabel_assignationId}"/>
                     <h:outputText value="#{assignationController.selected.assignationId}" title="#{bundle.ViewAssignationTitle_assignationId}"/>
                     <h:outputText value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
@@ -66,8 +21,19 @@
                     <h:outputText value="#{assignationController.selected.assistantId}" title="#{bundle.ViewAssignationTitle_assistantId}"/>
                     <h:outputText value="#{bundle.ViewAssignationLabel_projetId}"/>
                     <h:outputText value="#{assignationController.selected.projetId}" title="#{bundle.ViewAssignationTitle_projetId}"/>
-                </h:panelGrid>-->
-
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProjetEditLink}"/>
+                <br />
+                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ViewProjetCreateLink}" />
+                <br />
+                <h:commandLink action="#{projetController.prepareList}" value="#{bundle.ViewProjetShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProjetIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

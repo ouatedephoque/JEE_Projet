@@ -5,6 +5,7 @@
  */
 package src.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,5 +28,4 @@ public class AssistantFacade extends AbstractFacade<Assistant> {
     public AssistantFacade() {
         super(Assistant.class);
     }
-    
 }

@@ -6,21 +6,28 @@ import src.controllers.util.PaginationHelper;
 import src.facades.AssignationFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import src.entities.Assistant;
+import src.entities.GroupeCompetence;
 
 @ManagedBean(name = "assignationController")
 @SessionScoped
-public class AssignationController implements Serializable {
+public class AssignationController implements Serializable, Converter {
 
     private Assignation current;
     private DataModel items = null;
@@ -186,6 +193,32 @@ public class AssignationController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }@Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) 
+    {
+        if (value == null || !value.matches("\\d+")) {
+            return null;
+        }
+
+        Assignation assignation = ejbFacade.find(Integer.valueOf(value));
+
+        if (assignation == null) 
+        {
+            throw new ConverterException(new FacesMessage("Unknown operation ID: " + value));
+        }
+
+        return assignation;
+    }
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) 
+    {
+        if (!(value instanceof Assignation) || ((Assignation) value).getAssignationId()== null) 
+        {
+            return null;
+        }
+
+        return String.valueOf(((Assignation) value).getAssignationId());
     }
 
     @FacesConverter(forClass = Assignation.class)
@@ -225,7 +258,6 @@ public class AssignationController implements Serializable {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Assignation.class.getName());
             }
         }
-
     }
 
 }

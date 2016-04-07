@@ -8,19 +8,22 @@ import src.facades.AssistantFacade;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import src.entities.GroupeCompetence;
 
 @ManagedBean(name = "assistantController")
 @SessionScoped
-public class AssistantController implements Serializable {
+public class AssistantController implements Serializable, Converter {
 
     private Assistant current;
     private DataModel items = null;
@@ -28,6 +31,7 @@ public class AssistantController implements Serializable {
     private src.facades.AssistantFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Assistant selectedAssistant;
 
     public AssistantController() {
     }
@@ -187,6 +191,34 @@ public class AssistantController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
+    
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) 
+    {
+        if (value == null || !value.matches("\\d+")) {
+            return null;
+        }
+
+        Assistant assistant = ejbFacade.find(Integer.valueOf(value));
+
+        if (assistant == null) 
+        {
+            throw new ConverterException(new FacesMessage("Unknown operation ID: " + value));
+        }
+
+        return assistant;
+    }
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) 
+    {
+        if (!(value instanceof Assistant) || ((Assistant) value).getAssistantId() == null) 
+        {
+            return null;
+        }
+
+        return String.valueOf(((Assistant) value).getAssistantId());
+    }
 
     @FacesConverter(forClass = Assistant.class)
     public static class AssistantControllerConverter implements Converter {
@@ -226,6 +258,14 @@ public class AssistantController implements Serializable {
             }
         }
 
+    }
+
+    public Assistant getSelectedAssistant() {
+        return selectedAssistant;
+    }
+
+    public void setSelectedAssistant(Assistant selectedAssistant) {
+        this.selectedAssistant = selectedAssistant;
     }
 
 }

@@ -5,10 +5,12 @@
  */
 package src.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import src.entities.Assignation;
+import src.entities.Assistant;
 
 /**
  *
@@ -27,5 +29,4 @@ public class AssignationFacade extends AbstractFacade<Assignation> {
     public AssignationFacade() {
         super(Assignation.class);
     }
-    
 }
