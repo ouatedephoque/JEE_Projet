@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 26 Février 2016 à 16:08
+-- Généré le :  Mar 12 Avril 2016 à 11:16
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -34,14 +34,7 @@ CREATE TABLE IF NOT EXISTS `assignation` (
   PRIMARY KEY (`assignation_id`),
   KEY `assistant_id` (`assistant_id`),
   KEY `projet_id` (`projet_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `assignation`
---
-
-INSERT INTO `assignation` (`assignation_id`, `taux_engagment_projet`, `assistant_id`, `projet_id`) VALUES
-(1, 50, 1, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -67,14 +60,15 @@ CREATE TABLE IF NOT EXISTS `assistant` (
   `groupe_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`assistant_id`),
   KEY `groupe_id` (`groupe_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `assistant`
 --
 
 INSERT INTO `assistant` (`assistant_id`, `nom`, `prenom`, `login`, `password`, `email`, `adresse`, `abreviation`, `domaine`, `fonction`, `nombre_heure_annuelle`, `taux_engagement`, `taux_enseignement`, `taux_taches_internes`, `groupe_id`) VALUES
-(1, 'Di Stasio', 'Leonardo', '', '', 'leonardo.distasio@he-arc.ch', 'Ch. Fin', 'LDS', 'Info DLM', '1', 1200, 50, 20, 10, 13);
+(3, 'Di Stasio', 'Leonardo', 'leonardo.distasio', '098f6bcd4621d373cade4e832627b4f6', 'yohsk10@gmail.com', 'Chemin Fin de là Outre', 'LDS', 'INF3 DLM', 'ADMIN', 1200, 50, 20, 10, 3),
+(4, 'Assunçao', 'Jeshon', 'jeshon.assuncao', '098f6bcd4621d373cade4e832627b4f6', 'jeshon.assuncao@he-arc.ch', '', 'jas', 'INF3', 'USER', 1000, 70, 20, 0, 5);
 
 -- --------------------------------------------------------
 
@@ -125,14 +119,7 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `budget` decimal(25,0) DEFAULT NULL,
   `chef` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`projet_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `projet`
---
-
-INSERT INTO `projet` (`projet_id`, `nom`, `sagex`, `date_debut`, `date_fin`, `tarif_horaire_assistant`, `tarif_horaire_adjoint`, `budget`, `chef`) VALUES
-(1, 'Projet Test', 123453, '2016-02-26 00:00:00', '2016-06-16 00:00:00', '5000', '6000', '100000', 'Ouherani');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contraintes pour les tables exportées
