@@ -64,14 +64,14 @@
                             </f:facet>
                             <h:commandLink action="#{projetController.prepareView}" value="#{bundle.ListProjetViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.prepareEdit}" value="#{bundle.ListProjetEditLink}"/>
+                            <h:commandLink action="#{projetController.prepareEdit}" value="#{bundle.ListProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.destroy}" value="#{bundle.ListProjetDestroyLink}"/>
+                            <h:commandLink action="#{projetController.destroy}" value="#{bundle.ListProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <a href="/ProjetIsic/faces/admin/projet/Create.xhtml" class="waves-effect waves-light pink btn">#{bundle.ListProjetCreateLink}</a>
+                <h:commandLink action="/faces/admin/projet/Create.xhtml" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListProjetCreateLink}" />
             </h:form>
         </ui:define>
         

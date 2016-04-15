@@ -17,6 +17,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean(name = "projetController")
 @SessionScoped
@@ -94,7 +95,7 @@ public class ProjetController implements Serializable {
     public String prepareEdit() {
         current = (Projet) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/admin/projet/Edit";
     }
 
     public String update() {
@@ -235,6 +236,36 @@ public class ProjetController implements Serializable {
 
     public void setSelectedProjetAssign(Projet selectedProjetAssign) {
         this.selectedProjetAssign = selectedProjetAssign;
+    }
+    
+    public String getMyProjectView(Projet projet)
+    {
+        if(current == null)
+        {
+            current = projet;
+        }
+        return "/user/projet/View";
+    }
+    
+    public String getMyProjectEdit(Projet projet)
+    {
+        if(current == null)
+        {
+            current = projet;
+        }
+        return "/admin/projet/Edit";
+    }
+    
+    public String getMyProjectDestroy(Projet projet)
+    {
+        if(current == null)
+        {
+            current = projet;
+        }
+        performDestroy();
+        recreatePagination();
+        recreateModel();
+        return "List";
     }
 
 }

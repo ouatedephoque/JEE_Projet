@@ -300,4 +300,9 @@ public class Assistant implements Serializable {
         this.email = email;
     }
     
+    public boolean isAdmin()
+    {
+        return this.fonction.equals("ADMIN");
+    }
+    
 }

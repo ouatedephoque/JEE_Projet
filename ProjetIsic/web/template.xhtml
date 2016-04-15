@@ -32,18 +32,19 @@
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><h:link outcome="/index" value="Accueil"/></li>
-                    <li><h:link outcome="/user/projet/ListMine" value="Mes projets"/></li>
-                    <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
                     <ui:fragment rendered="#{not empty request.remoteUser}">
+                        <li><h:link outcome="/user/projet/ListMine" value="Mes projets"/></li>
+                        <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
+                        <li><h:link outcome="/user/assignation/List" value="Assignation projet"/></li>
                         <li><h:link outcome="#{assistantController.getMyProfil()}" value="Mon profil"/></li>
                     </ui:fragment>
                 </ul>
                 <ul class="side-nav" id="mobile-nav">
                     <li><h:link outcome="/index" value="Accueil"/></li>
-                    <li><h:link outcome="/user/projet/List" value="Mes projets"/></li>
-                    <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
-                    <li><h:link outcome="/user/assistant/List" value="Gestion des assistants"/></li>
                     <ui:fragment rendered="#{not empty request.remoteUser}">
+                        <li><h:link outcome="/user/projet/List" value="Mes projets"/></li>
+                        <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
+                        <li><h:link outcome="/user/assistant/List" value="Gestion des assistants"/></li>
                         <li><h:link outcome="#{assistantController.getMyProfil()}" value="Mon profil"/></li>
                     </ui:fragment>
                 </ul>

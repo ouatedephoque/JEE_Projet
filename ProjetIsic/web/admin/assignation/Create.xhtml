@@ -77,40 +77,4 @@
             </h:form>
         </ui:define>
     </ui:composition>
-
-    <!--<ui:composition template="/index.xhtml">
-        <ui:define name="title">
-            <h:outputText value="{bundle.CreateAssignationTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="{bundle.CreateAssignationLabel_assignationId}" for="assignationId" />
-                    <h:inputText id="assignationId" value="{assignationController.selected.assignationId}" title="{bundle.CreateAssignationTitle_assignationId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_assignationId}"/>
-                    <h:outputLabel value="{bundle.CreateAssignationLabel_tauxEngagmentProjet}" for="tauxEngagmentProjet" />
-                    <h:inputText id="tauxEngagmentProjet" value="{assignationController.selected.tauxEngagmentProjet}" title="{bundle.CreateAssignationTitle_tauxEngagmentProjet}" />
-                    <h:outputLabel value="{bundle.CreateAssignationLabel_assistantId}" for="assistantId" />
-                    <h:selectOneMenu id="assistantId" value="{assignationController.selected.assistantId}" title="{bundle.CreateAssignationTitle_assistantId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_assistantId}">
-                        <f:selectItems value="{assistantController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="{bundle.CreateAssignationLabel_projetId}" for="projetId" />
-                    <h:selectOneMenu id="projetId" value="{assignationController.selected.projetId}" title="{bundle.CreateAssignationTitle_projetId}" required="true" requiredMessage="#{bundle.CreateAssignationRequiredMessage_projetId}">
-                        <f:selectItems value="{projetController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="{assignationController.create}" value="{bundle.CreateAssignationSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="{assignationController.prepareList}" value="{bundle.CreateAssignationShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="{bundle.CreateAssignationIndexLink}"/>
-            </h:form>
-        </ui:define>
-    </ui:composition>-->
-
 </html>

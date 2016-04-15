@@ -13,8 +13,6 @@
         <ui:define name="body">
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAssignationLabel_assignationId}"/>
-                    <h:outputText value="#{assignationController.selected.assignationId}" title="#{bundle.ViewAssignationTitle_assignationId}"/>
                     <h:outputText value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
                     <h:outputText value="#{assignationController.selected.tauxEngagmentProjet}" title="#{bundle.ViewAssignationTitle_tauxEngagmentProjet}"/>
                     <h:outputText value="#{bundle.ViewAssignationLabel_assistantId}"/>
@@ -31,9 +29,6 @@
                 <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ViewProjetCreateLink}" />
                 <br />
                 <h:commandLink action="#{projetController.prepareList}" value="#{bundle.ViewProjetShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewProjetIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
