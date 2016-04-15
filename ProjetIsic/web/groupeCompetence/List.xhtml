@@ -19,7 +19,7 @@
                     <h:outputText value="#{groupeCompetenceController.pagination.pageFirstItem + 1}..#{groupeCompetenceController.pagination.pageLastItem + 1}/#{groupeCompetenceController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{groupeCompetenceController.previous}" value="#{bundle.Previous} #{groupeCompetenceController.pagination.pageSize}" rendered="#{groupeCompetenceController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{groupeCompetenceController.next}" value="#{bundle.Next} #{groupeCompetenceController.pagination.pageSize}" rendered="#{groupeCompetenceController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{groupeCompetenceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable value="#{groupeCompetenceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" class="striped">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListGroupeCompetenceTitle_id}"/>
@@ -51,7 +51,7 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{groupeCompetenceController.prepareCreate}" value="#{bundle.ListGroupeCompetenceCreateLink}"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{groupeCompetenceController.prepareCreate}" value="#{bundle.ListGroupeCompetenceCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListGroupeCompetenceIndexLink}"/>

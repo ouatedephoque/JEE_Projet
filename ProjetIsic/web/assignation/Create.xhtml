@@ -55,9 +55,6 @@
                             <f:selectItems value="#{groupeCompetenceController.listAssistantCompetent}"
                                            var='ac' itemLabel="#{ac.nom} #{ac.prenom}   |    #{ac.tauxEngagement}%" 
                                            itemValue="#{ac}" />
-                        
-                            <f:ajax event="change"
-                                    render="assistantSelect" />
                         </h:selectOneMenu>
                     </article>
                     

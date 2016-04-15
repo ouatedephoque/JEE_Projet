@@ -22,7 +22,7 @@
                     <h:outputText value="#{projetController.pagination.pageFirstItem + 1}..#{projetController.pagination.pageLastItem + 1}/#{projetController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{projetController.previous}" value="#{bundle.Previous} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{projetController.next}" value="#{bundle.Next} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{projetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable value="#{projetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" class="striped">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_projetId}"/>
@@ -94,7 +94,7 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ListProjetCreateLink}"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.prepareCreate}" value="#{bundle.ListProjetCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListProjetIndexLink}"/>
