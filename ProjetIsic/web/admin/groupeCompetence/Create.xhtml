@@ -23,10 +23,10 @@
                     <h:inputText id="nom" value="#{groupeCompetenceController.selected.nom}" title="#{bundle.CreateGroupeCompetenceTitle_nom}" required="true" requiredMessage="#{bundle.CreateGroupeCompetenceRequiredMessage_nom}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{groupeCompetenceController.create}" value="#{bundle.CreateGroupeCompetenceSaveLink}" />
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{groupeCompetenceController.create}" value="#{bundle.CreateGroupeCompetenceSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{groupeCompetenceController.prepareList}" value="#{bundle.CreateGroupeCompetenceShowAllLink}" immediate="true"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{groupeCompetenceController.prepareList}" value="#{bundle.CreateGroupeCompetenceShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.CreateGroupeCompetenceIndexLink}"/>
