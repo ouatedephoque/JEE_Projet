@@ -35,7 +35,7 @@
                                 <h:outputText value="#{bundle.ListProjetTitle_dateDebut}"/>
                             </f:facet>
                             <h:outputText value="#{item.dateDebut}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
                         </h:column>
                         <h:column>
@@ -43,20 +43,8 @@
                                 <h:outputText value="#{bundle.ListProjetTitle_dateFin}"/>
                             </f:facet>
                             <h:outputText value="#{item.dateFin}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAssistant}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tarifHoraireAssistant}"/> CHF
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAdjoint}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tarifHoraireAdjoint}"/> CHF
                         </h:column>
                         <h:column>
                             <f:facet name="header">

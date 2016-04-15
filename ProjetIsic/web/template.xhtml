@@ -40,9 +40,9 @@
                 </ul>
                 <ul class="side-nav" id="mobile-nav">
                     <li><h:link outcome="/index" value="Accueil"/></li>
-                    <li><h:link outcome="/projet/List" value="Mes projets"/></li>
-                    <li><h:link outcome="/projet/List" value="Gestion des projets"/></li>
-                    <li><h:link outcome="/assistant/List" value="Gestion des assistants"/></li>
+                    <li><h:link outcome="/user/projet/List" value="Mes projets"/></li>
+                    <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
+                    <li><h:link outcome="/user/assistant/List" value="Gestion des assistants"/></li>
                     <ui:fragment rendered="#{not empty request.remoteUser}">
                         <li><h:link outcome="#{assistantController.getMyProfil()}" value="Mon profil"/></li>
                     </ui:fragment>
