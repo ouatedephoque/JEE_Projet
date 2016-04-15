@@ -35,7 +35,7 @@
                     <li><h:link outcome="/user/projet/ListMine" value="Mes projets"/></li>
                     <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
                     <ui:fragment rendered="#{not empty request.remoteUser}">
-                        <li><h:link outcome="#{assistantController.getMyProfil}" value="Mon profil"/></li>
+                        <li><h:link outcome="#{assistantController.getMyProfil()}" value="Mon profil"/></li>
                     </ui:fragment>
                 </ul>
                 <ul class="side-nav" id="mobile-nav">

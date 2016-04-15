@@ -276,7 +276,7 @@ public class AssistantController implements Serializable, Converter {
             HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
             current = ejbFacade.getAssistantByLogin(req.getRemoteUser());
         }
-        return prepareView();
+        return "/user/assistant/View";
     }
 
 }
