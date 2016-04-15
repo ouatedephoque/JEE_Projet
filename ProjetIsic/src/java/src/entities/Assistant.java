@@ -47,7 +47,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Assistant.findByTauxTachesInternes", query = "SELECT a FROM Assistant a WHERE a.tauxTachesInternes = :tauxTachesInternes"),
     @NamedQuery(name = "Assistant.findByGroupCompetence", query = "SELECT a FROM Assistant a WHERE a.groupeId = :groupeId"),
     @NamedQuery(name = "Assistant.findByMaxTauxEngagement", query = "SELECT a FROM Assistant a WHERE a.tauxEngagement <= :tauxEngagement"),
-    @NamedQuery(name = "Assistant.findByGroupCompetenceAndTauxEngagement", query = "SELECT a FROM Assistant a WHERE a.groupeId = :groupeId AND a.tauxEngagement <= :tauxEngagement")})
+    @NamedQuery(name = "Assistant.findByGroupCompetenceAndTauxEngagement", query = "SELECT a FROM Assistant a WHERE a.groupeId = :groupeId AND a.tauxEngagement <= :tauxEngagement"),
+    @NamedQuery(name = "Assistant.findByLoginPassword", query = "SELECT a FROM Assistant a WHERE a.login = :login AND a.password = :password"),
+    @NamedQuery(name = "Assistant.findByLogin", query = "SELECT a FROM Assistant a WHERE a.login = :login")})
 public class Assistant implements Serializable {
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)

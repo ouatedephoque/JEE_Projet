@@ -5,7 +5,6 @@
  */
 package src.facades;
 
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,4 +27,20 @@ public class AssistantFacade extends AbstractFacade<Assistant> {
     public AssistantFacade() {
         super(Assistant.class);
     }
+    
+    public Assistant getAssistantByLoginPassword(String login, String password)
+    {
+        return (Assistant) em.createNamedQuery("Assistant.findByLoginPassword").
+                            setParameter("login", login).
+                            setParameter("password", password).
+                            getSingleResult();
+    }
+    
+    public Assistant getAssistantByLogin(String login)
+    {
+        return (Assistant) em.createNamedQuery("Assistant.findByLogin").
+                            setParameter("login", login).
+                            getSingleResult();
+    }
+    
 }

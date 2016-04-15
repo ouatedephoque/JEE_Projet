@@ -32,6 +32,7 @@
                     </h:selectOneMenu>
                     
                     <h:outputLabel value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
+                    
                     <h:selectOneMenu value="#{groupeCompetenceController.pourcentSelect}">
                         
                         <f:selectItems value="#{groupeCompetenceController.pourcentsToSelect}"
@@ -49,15 +50,11 @@
                     <article class='col s4'>
                         <h:selectOneMenu id="selectAssistant" 
                                          required="true" 
-                                         converter="#{assistantController}"
                                          value="#{assignationController.selected.assistantId}">
                             
                             <f:selectItems value="#{groupeCompetenceController.listAssistantCompetent}"
                                            var='ac' itemLabel="#{ac.nom} #{ac.prenom}   |    #{ac.tauxEngagement}%" 
                                            itemValue="#{ac}" />
-                        
-                            <f:ajax event="change"
-                                    render="assistantSelect" />
                         </h:selectOneMenu>
                     </article>
                     
@@ -68,7 +65,8 @@
                     </article>
                     
                     <article class='col s4'>
-                        <h:selectOneMenu value="#{assignationController.selected.projetId}">
+                        <h:selectOneMenu required="true"
+                                         value="#{assignationController.selected.projetId}">
                             <f:selectItems value="#{projetController.items}" 
                                            var="pc" itemLabel="#{pc.nom}" 
                                            itemValue="#{pc}" />

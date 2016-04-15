@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="ISIC - Login"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <!--<form method="POST" action="j_security_check">  
+                <div class="input-field col s4">
+                    <input type="text" id="j_username" name="j_username" />
+                    <label for="j_username">Username:</label>
+                </div>   
+                <div class="input-field col s4">
+                    <input type="password" id="j_password" name="j_password" /> 
+                    <label for="j_password">Password:</label>
+                </div>
+                <input type="submit" value="Login" />              
+                <input type="reset" value="Reset" />
+            </form>-->
+            <form method="POST" action="j_security_check"> 
+                <h:outputLabel for="j_username" value="Username" />
+                <h:inputText id="j_username" required="true" />
+                <br />
+                <h:outputLabel for="j_password" value="Password" />
+                <h:inputSecret id="j_password" required="true" />
+                <br />
+                <input type="submit" value="Login" />              
+                <input type="reset" value="Reset" />
+            </form>
+        </ui:define>
+    </ui:composition>
+
+</html>
