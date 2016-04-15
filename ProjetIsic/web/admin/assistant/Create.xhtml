@@ -49,10 +49,10 @@
                     <h:inputText id="email" value="#{assistantController.selected.email}" title="#{bundle.CreateAssistantTitle_email}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_email}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{assistantController.create}" value="#{bundle.CreateAssistantSaveLink}" />
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{assistantController.create}" value="#{bundle.CreateAssistantSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{assistantController.prepareList}" value="#{bundle.CreateAssistantShowAllLink}" immediate="true"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{assistantController.prepareList}" value="#{bundle.CreateAssistantShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.CreateAssistantIndexLink}"/>

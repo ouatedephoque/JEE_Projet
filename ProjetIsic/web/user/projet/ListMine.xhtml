@@ -22,7 +22,7 @@
                     <h:outputText value="#{projetController.pagination.pageFirstItem + 1}..#{projetController.pagination.pageLastItem + 1}/#{projetController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{projetController.previous}" value="#{bundle.Previous} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{projetController.next}" value="#{bundle.Next} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{projetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" class="striped">
+                    <h:dataTable value="#{userAuthentification.assistant.assignationCollection}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_projetId}"/>
@@ -33,19 +33,19 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_nom}"/>
                             </f:facet>
-                            <h:outputText value="#{item.nom}"/>
+                            <h:outputText value="#{item.projetId.nom}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_sagex}"/>
                             </f:facet>
-                            <h:outputText value="#{item.sagex}"/>
+                            <h:outputText value="#{item.projetId.sagex}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_dateDebut}"/>
                             </f:facet>
-                            <h:outputText value="#{item.dateDebut}">
+                            <h:outputText value="#{item.projetId.dateDebut}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </h:column>
@@ -53,7 +53,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_dateFin}"/>
                             </f:facet>
-                            <h:outputText value="#{item.dateFin}">
+                            <h:outputText value="#{item.projetId.dateFin}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </h:column>
@@ -61,19 +61,19 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAssistant}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tarifHoraireAssistant}"/>
+                            <h:outputText value="#{item.projetId.tarifHoraireAssistant}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAdjoint}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tarifHoraireAdjoint}"/>
+                            <h:outputText value="#{item.projetId.tarifHoraireAdjoint}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_budget}"/>
                             </f:facet>
-                            <h:outputText value="#{item.budget}"/>
+                            <h:outputText value="#{item.projetId.budget}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

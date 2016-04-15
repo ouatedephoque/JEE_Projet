@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/index.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewAssistantTitle}"></h:outputText>
         </ui:define>
@@ -13,53 +13,41 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAssistantLabel_assistantId}"/>
-                    <h:outputText value="#{assistantController.selected.assistantId}" title="#{bundle.ViewAssistantTitle_assistantId}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_nom}"/>
-                    <h:outputText value="#{assistantController.selected.nom}" title="#{bundle.ViewAssistantTitle_nom}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_prenom}"/>
-                    <h:outputText value="#{assistantController.selected.prenom}" title="#{bundle.ViewAssistantTitle_prenom}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_adresse}"/>
-                    <h:outputText value="#{assistantController.selected.adresse}" title="#{bundle.ViewAssistantTitle_adresse}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_abreviation}"/>
-                    <h:outputText value="#{assistantController.selected.abreviation}" title="#{bundle.ViewAssistantTitle_abreviation}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_domaine}"/>
-                    <h:outputText value="#{assistantController.selected.domaine}" title="#{bundle.ViewAssistantTitle_domaine}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_fonction}"/>
-                    <h:outputText value="#{assistantController.selected.fonction}" title="#{bundle.ViewAssistantTitle_fonction}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_nombreHeureAnnuelle}"/>
-                    <h:outputText value="#{assistantController.selected.nombreHeureAnnuelle}" title="#{bundle.ViewAssistantTitle_nombreHeureAnnuelle}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_tauxEngagement}"/>
-                    <h:outputText value="#{assistantController.selected.tauxEngagement}" title="#{bundle.ViewAssistantTitle_tauxEngagement}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_tauxEnseignement}"/>
-                    <h:outputText value="#{assistantController.selected.tauxEnseignement}" title="#{bundle.ViewAssistantTitle_tauxEnseignement}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_tauxTachesInternes}"/>
-                    <h:outputText value="#{assistantController.selected.tauxTachesInternes}" title="#{bundle.ViewAssistantTitle_tauxTachesInternes}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_groupeId}"/>
-                    <h:outputText value="#{assistantController.selected.groupeId}" title="#{bundle.ViewAssistantTitle_groupeId}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_login}"/>
-                    <h:outputText value="#{assistantController.selected.login}" title="#{bundle.ViewAssistantTitle_login}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_password}"/>
-                    <h:outputText value="#{assistantController.selected.password}" title="#{bundle.ViewAssistantTitle_password}"/>
-                    <h:outputText value="#{bundle.ViewAssistantLabel_email}"/>
-                    <h:outputText value="#{assistantController.selected.email}" title="#{bundle.ViewAssistantTitle_email}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{assistantController.destroyAndView}" value="#{bundle.ViewAssistantDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAssistantEditLink}"/>
-                <br />
-                <h:commandLink action="#{assistantController.prepareCreate}" value="#{bundle.ViewAssistantCreateLink}" />
-                <br />
-                <h:commandLink action="#{assistantController.prepareList}" value="#{bundle.ViewAssistantShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAssistantIndexLink}"/>
-
-            </h:form>
+            
+            <section class="row">
+                <h:form>
+                    <h:panelGrid columns="2" class="col s6">
+                        <h:outputText value="Nom et prénom : "/>
+                        <h:outputText value="#{assistantController.selected.nom.concat(' ').concat(assistantController.selected.prenom)}"/>
+                        
+                        <h:outputText value="#{bundle.ListAssistantTitle_adresse} : "/>
+                        <h:outputText value="#{assistantController.selected.adresse}" title="#{bundle.ViewAssistantTitle_adresse}"/>
+                        
+                        <h:outputText value="Téléphone" />
+                        <h:outputText value="" title="" />
+                        
+                        <h:outputText value="#{bundle.ListAssistantTitle_domaine} : "/>
+                        <h:outputText value="#{assistantController.selected.domaine}" title="#{bundle.ViewAssistantTitle_domaine}"/>
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="2" class="col s4">
+                        <h:dataTable value="#{assistantController.selected.assignationCollection}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProjetTitle_nom}"/>
+                                </f:facet>
+                                <h:commandLink action="#{projetController.prepareView}" value="#{item.projetId.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAssignationTitle_tauxEngagmentProjet}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tauxEngagmentProjet}%"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGrid>
+                </h:form>
+            </section>
         </ui:define>
     </ui:composition>
 

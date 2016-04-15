@@ -29,14 +29,13 @@
             <url-pattern>/faces/admin/*</url-pattern>
         </web-resource-collection>
         <web-resource-collection>
-            <web-resource-name>access_user</web-resource-name>
+            <web-resource-name>access_other</web-resource-name>
             <description/>
             <url-pattern>/faces/user/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
             <role-name>Admin</role-name>
-            <role-name>Users</role-name>
         </auth-constraint>
     </security-constraint>
     <security-constraint>
