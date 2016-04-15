@@ -39,7 +39,6 @@
                     </ui:fragment>
                 </ul>
                 <ul class="side-nav" id="mobile-nav">
-<<<<<<< HEAD
                     <li><h:link outcome="/index" value="Accueil"/></li>
                     <li><h:link outcome="/projet/List" value="Mes projets"/></li>
                     <li><h:link outcome="/projet/List" value="Gestion des projets"/></li>
@@ -47,12 +46,6 @@
                     <ui:fragment rendered="#{not empty request.remoteUser}">
                         <li><h:link outcome="#{assistantController.getMyProfil}" value="Mon profil"/></li>
                     </ui:fragment>
-=======
-                    <li><h:link outcome="/index" value="Acceuil"/></li>
-                    <li><h:link outcome="/user/projet/List" value="Mes projets"/></li>
-                    <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
-                    <li><h:link outcome="/user/assistant/List" value="Mon profil"/></li>
->>>>>>> cab11dfdef7daa205c089e4ca8d10c7cc66638f4
                 </ul>
                 <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
