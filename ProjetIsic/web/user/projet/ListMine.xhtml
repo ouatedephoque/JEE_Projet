@@ -6,9 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-        
+        <ui:define name="menu">
+            
+        </ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProjetTitle}"></h:outputText>
+        </ui:define>
         <ui:define name="body">
-            <h:form class="col s12">
+            <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
@@ -18,6 +23,12 @@
                     <h:commandLink action="#{projetController.previous}" value="#{bundle.Previous} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{projetController.next}" value="#{bundle.Next} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{projetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" class="striped">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjetTitle_projetId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.projetId}"/>
+                        </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_nom}"/>
@@ -50,19 +61,19 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAssistant}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tarifHoraireAssistant}"/> CHF
+                            <h:outputText value="#{item.tarifHoraireAssistant}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAdjoint}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tarifHoraireAdjoint}"/> CHF
+                            <h:outputText value="#{item.tarifHoraireAdjoint}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_budget}"/>
                             </f:facet>
-                            <h:outputText value="#{item.budget}"/> CHF
+                            <h:outputText value="#{item.budget}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -83,9 +94,12 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.prepareCreate}" value="#{bundle.ListProjetCreateLink}"/>
+                <a href="/ProjetIsic/faces/admin/projet/Create.xhtml" class="waves-effect waves-light pink btn">#{bundle.ListProjetCreateLink}</a>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProjetIndexLink}"/>
             </h:form>
         </ui:define>
-        
     </ui:composition>
+
 </html>

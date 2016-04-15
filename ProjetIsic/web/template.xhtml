@@ -15,16 +15,28 @@
     </h:head>
 
     <h:body>
+        
         <!-- Navbar goes here -->
         <nav class="pink">
             <div class="nav-wrapper">
-                <a href="index.xhtml" class="brand-logo right"><!--<h:graphicImage library="images" value="isic.gif" />--></a>
-                <ul class="left hide-on-med-and-down">
+                <ul class="">
+                    <ui:fragment rendered="#{empty request.remoteUser}">
+                        <li><h:link outcome="/Login" value="Login"/></li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{not empty request.remoteUser}">
+                        <h:form>
+                            <li><h:commandLink value="Déconnexion" action="#{userAuthentification.logout()}" /></li>
+                        </h:form>
+                        <li>Bienvenue #{userAuthentification.assistant.prenom}</li>
+                    </ui:fragment>
+                </ul>
+                <ul class="right hide-on-med-and-down">
                     <li><h:link outcome="/index" value="Accueil"/></li>
-                    <li><h:link outcome="/projet/ListMine" value="Mes projets"/></li>
-                    <li><h:link outcome="/projet/List" value="Gestion des projets"/></li>
-                    <li><h:link outcome="/assistant/List" value="Gestion des assistants"/></li>
-                    <li><h:link outcome="/assistant/List" value="Mon profil"/></li>
+                    <li><h:link outcome="/user/projet/ListMine" value="Mes projets"/></li>
+                    <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
+                    <ui:fragment rendered="#{not empty request.remoteUser}">
+                        <li><h:link outcome="#{assistantController.getMyProfil}" value="Mon profil"/></li>
+                    </ui:fragment>
                 </ul>
                 <ul class="side-nav" id="mobile-nav">
                     <li><h:link outcome="/index" value="Acceuil"/></li>
@@ -78,15 +90,15 @@
         <h:outputScript library="js" name="materialize.js" />
         <h:outputScript library="js" name="materialize.min.js" />
         <br />
-        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <h:link outcome="/user/assistant/List" value="Show All Assistant Items"/>
         <br />
-        <h:link outcome="/assignation/List" value="Show All Assignation Items"/>
+        <h:link outcome="/user/assignation/List" value="Show All Assignation Items"/>
         <br />
-        <h:link outcome="/assistant/List" value="Show All Assistant Items"/>
+        <h:link outcome="/user/assistant/List" value="Show All Assistant Items"/>
         <br />
-        <h:link outcome="/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
+        <h:link outcome="/user/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
         <br />
-        <h:link outcome="/projet/List" value="Show All Projet Items"/>
+        <h:link outcome="/user/projet/List" value="Show All Projet Items"/>
         
         <script>
             $(document).ready(function() {

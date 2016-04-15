@@ -41,6 +41,12 @@
                     <h:selectOneMenu id="groupeId" value="#{assistantController.selected.groupeId}" title="#{bundle.EditAssistantTitle_groupeId}" >
                         <f:selectItems value="#{groupeCompetenceController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAssistantLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{assistantController.selected.login}" title="#{bundle.EditAssistantTitle_login}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.EditAssistantLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{assistantController.selected.password}" title="#{bundle.EditAssistantTitle_password}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_password}"/>
+                    <h:outputLabel value="#{bundle.EditAssistantLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{assistantController.selected.email}" title="#{bundle.EditAssistantTitle_email}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_email}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{assistantController.update}" value="#{bundle.EditAssistantSaveLink}"/>
                 <br />

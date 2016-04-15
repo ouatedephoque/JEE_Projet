@@ -19,6 +19,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 import src.entities.GroupeCompetence;
 
 @ManagedBean(name = "assistantController")
@@ -266,6 +267,16 @@ public class AssistantController implements Serializable, Converter {
 
     public void setSelectedAssistant(Assistant selectedAssistant) {
         this.selectedAssistant = selectedAssistant;
+    }
+    
+    public String getMyProfil()
+    {
+        if(current == null)
+        {
+            HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+            current = ejbFacade.getAssistantByLogin(req.getRemoteUser());
+        }
+        return prepareView();
     }
 
 }
