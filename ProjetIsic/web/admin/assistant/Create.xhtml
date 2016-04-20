@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAssistantLabel_assistantId}" for="assistantId" />
-                    <h:inputText id="assistantId" value="#{assistantController.selected.assistantId}" title="#{bundle.CreateAssistantTitle_assistantId}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_assistantId}"/>
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_nom}" for="nom" />
                     <h:inputText id="nom" value="#{assistantController.selected.nom}" title="#{bundle.CreateAssistantTitle_nom}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_nom}"/>
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_prenom}" for="prenom" />
