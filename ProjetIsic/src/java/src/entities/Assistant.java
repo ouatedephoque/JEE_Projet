@@ -6,6 +6,9 @@
 package src.entities;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -289,7 +292,7 @@ public class Assistant implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = hashPassword(password);
     }
 
     public String getEmail() {
@@ -303,6 +306,29 @@ public class Assistant implements Serializable {
     public boolean isAdmin()
     {
         return this.fonction.equals("ADMIN");
+    }
+    
+    public String hashPassword(String pswd)
+    {
+        String sha256 = null;
+        if(pswd == null) return null;
+         
+        try 
+        {   
+            //Create MessageDigest object for MD5
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            //Update input string in message digest
+            digest.update(pswd.getBytes(), 0, pswd.length());       
+
+            //Converts message digest value in base 16 (hex)
+            sha256 = String.format("%064x", new BigInteger(1, digest.digest()));
+        } 
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return sha256;
     }
     
 }

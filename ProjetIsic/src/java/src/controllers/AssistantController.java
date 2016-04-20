@@ -6,6 +6,9 @@ import src.controllers.util.PaginationHelper;
 import src.facades.AssistantFacade;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -278,5 +281,4 @@ public class AssistantController implements Serializable, Converter {
         }
         return "/user/assistant/View";
     }
-
 }
