@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditProjetLabel_projetId}" for="projetId" />
-                    <h:inputText id="projetId" value="#{projetController.selected.projetId}" title="#{bundle.EditProjetTitle_projetId}" required="true" requiredMessage="#{bundle.EditProjetRequiredMessage_projetId}"/>
                     <h:outputLabel value="#{bundle.EditProjetLabel_nom}" for="nom" />
                     <h:inputText id="nom" value="#{projetController.selected.nom}" title="#{bundle.EditProjetTitle_nom}" required="true" requiredMessage="#{bundle.EditProjetRequiredMessage_nom}"/>
                     <h:outputLabel value="#{bundle.EditProjetLabel_sagex}" for="sagex" />
@@ -38,13 +36,13 @@
                     <h:outputLabel value="#{bundle.EditProjetLabel_chef}" for="chef" />
                     <h:inputText id="chef" value="#{projetController.selected.chef}" title="#{bundle.EditProjetTitle_chef}" />
                 </h:panelGrid>
-                <h:commandLink class="waves-effect waves-light btn col s12" action="#{projetController.update}" value="#{bundle.EditProjetSaveLink}"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.update}" value="#{bundle.EditProjetSaveLink}"/>
                 <br />
                 <br />
-                <h:link class="waves-effect waves-light btn col s12" outcome="/faces/user/projet/View" value="#{bundle.EditProjetViewLink}"/>
+                <h:link class="waves-effect waves-light pink btn" outcome="/faces/user/projet/View" value="#{bundle.EditProjetViewLink}"/>
                 <br />
                 <br />
-                <h:commandLink class="waves-effect waves-light btn col s12" action="#{projetController.prepareList}" value="#{bundle.EditProjetShowAllLink}" immediate="true"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.prepareList}" value="#{bundle.EditProjetShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>

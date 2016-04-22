@@ -71,19 +71,20 @@ public class AssignationController implements Serializable, Converter {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        items = getItems();
+        return "/user/assignation/List";
     }
 
     public String prepareView() {
         current = (Assignation) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/user/assignation/View";
     }
 
     public String prepareCreate() {
         current = new Assignation();
         selectedItemIndex = -1;
-        return "Create";
+        return "/user/assignation/List";
     }
 
     public String create() {
@@ -100,14 +101,14 @@ public class AssignationController implements Serializable, Converter {
     public String prepareEdit() {
         current = (Assignation) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/admin/assignation/Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AssignationUpdated"));
-            return "View";
+            return "/user/assignation/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -120,7 +121,7 @@ public class AssignationController implements Serializable, Converter {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/user/assignation/List";
     }
 
     public String destroyAndView() {
@@ -128,11 +129,11 @@ public class AssignationController implements Serializable, Converter {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/user/assignation/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/user/assignation/List";
         }
     }
 
@@ -160,7 +161,9 @@ public class AssignationController implements Serializable, Converter {
         }
     }
 
-    public DataModel getItems() {
+    public DataModel getItems() 
+    {
+        items = null;
         if (items == null) {
             items = getPagination().createPageDataModel();
         }

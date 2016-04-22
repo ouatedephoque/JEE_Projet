@@ -37,14 +37,10 @@
                     <h:outputText value="#{projetController.selected.chef}" title="#{bundle.ViewProjetTitle_chef}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
                 <br />
                 <br />
-                <h:link outcome="#{projetController.getMyProjectEdit(projetController.selected)}" value="#{bundle.ViewProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
-                <br />
-                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ViewProjetCreateLink}" rendered="#{userAuthentification.assistant.admin}" />
-                <br />
-                <h:commandLink action="#{projetController.prepareList}" value="#{bundle.ViewProjetShowAllLink}"/>
+                <h:link class="waves-effect waves-light pink btn" outcome="#{projetController.getMyProjectEdit(projetController.selected)}" value="#{bundle.ViewProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
             </h:form>
         </ui:define>
     </ui:composition>
