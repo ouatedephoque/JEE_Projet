@@ -78,7 +78,7 @@ public class ProjetController implements Serializable {
     public String prepareCreate() {
         current = new Projet();
         selectedItemIndex = -1;
-        return "Create";
+        return "/user/projet/List";
     }
 
     public String create() {
@@ -102,7 +102,7 @@ public class ProjetController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ProjetUpdated"));
-            return "View";
+            return "/user/projet/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -266,6 +266,12 @@ public class ProjetController implements Serializable {
         recreatePagination();
         recreateModel();
         return "List";
+    }
+    
+    public String getProjectFromProfile(Projet projet)
+    {
+        current = projet;
+        return "/user/projet/View";
     }
 
 }

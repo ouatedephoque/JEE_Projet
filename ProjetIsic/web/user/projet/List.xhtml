@@ -62,11 +62,17 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{projetController.prepareView}" value="#{bundle.ListProjetViewLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.prepareView}">
+                                <i class="large material-icons">pageview</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.prepareEdit}" value="#{bundle.ListProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.prepareEdit}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="large material-icons">mode_edit</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.destroy}" value="#{bundle.ListProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.destroy}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="large material-icons">delete</i>
+                            </h:commandLink>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>

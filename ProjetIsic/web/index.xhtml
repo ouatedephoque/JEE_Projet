@@ -22,16 +22,18 @@
                 </div>
             </div>
 
-            <div class="col s12 m4 l4">
-                <div class="icon-block">
-                    <h:link outcome="user/assistant/List">
-                        <h2 class="center pink-text"><i class="large material-icons">perm_identity</i></h2>
-                        <h5 class="center black-text">Profil</h5>
+            <ui:fragment rendered="#{not empty request.remoteUser}">
+                <div class="col s12 m4 l4">
+                    <div class="icon-block">
+                        <h:link outcome="user/assistant/List">
+                            <h2 class="center pink-text"><i class="large material-icons">perm_identity</i></h2>
+                            <h5 class="center black-text">Liste des assistants</h5>
 
-                        <p class="light black-text">Vous pouvez ici modifier vos informations personnelles</p>
-                    </h:link>
-                </div>
-            </div> 
+                            <p class="light black-text">Ici vous pourrez visualiser les assistants et en créer des nouveaux</p>
+                        </h:link>
+                    </div>
+                </div> 
+            </ui:fragment>
         </ui:define>
     </ui:composition>
 </html>

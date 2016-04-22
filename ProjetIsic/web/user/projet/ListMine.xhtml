@@ -68,11 +68,17 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{projetController.getMyProjectView(item.projetId)}" value="#{bundle.ListProjetViewLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.getMyProjectView(item.projetId)}">
+                                <i class="large material-icons">pageview</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.getMyProjectEdit(item.projetId)}" value="#{bundle.ListProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.getMyProjectEdit(item.projetId)}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="large material-icons">mode_edit</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.getMyProjectDestroy(item.projetId)}" value="#{bundle.ListProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.getMyProjectDestroy(item.projetId)}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="large material-icons">delete</i>
+                            </h:commandLink>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
