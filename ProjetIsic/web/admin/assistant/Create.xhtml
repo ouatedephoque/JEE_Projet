@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAssistantLabel_assistantId}" for="assistantId" />
-                    <h:inputText id="assistantId" value="#{assistantController.selected.assistantId}" title="#{bundle.CreateAssistantTitle_assistantId}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_assistantId}"/>
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_nom}" for="nom" />
                     <h:inputText id="nom" value="#{assistantController.selected.nom}" title="#{bundle.CreateAssistantTitle_nom}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_nom}"/>
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_prenom}" for="prenom" />
@@ -27,20 +25,27 @@
                     <h:inputText id="abreviation" value="#{assistantController.selected.abreviation}" title="#{bundle.CreateAssistantTitle_abreviation}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_abreviation}"/>
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_domaine}" for="domaine" />
                     <h:inputText id="domaine" value="#{assistantController.selected.domaine}" title="#{bundle.CreateAssistantTitle_domaine}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_domaine}"/>
+                    
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_fonction}" for="fonction" />
                     <h:inputText id="fonction" value="#{assistantController.selected.fonction}" title="#{bundle.CreateAssistantTitle_fonction}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_fonction}"/>
+                    
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_nombreHeureAnnuelle}" for="nombreHeureAnnuelle" />
-                    <h:inputText id="nombreHeureAnnuelle" value="#{assistantController.selected.nombreHeureAnnuelle}" title="#{bundle.CreateAssistantTitle_nombreHeureAnnuelle}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_nombreHeureAnnuelle}"/>
+                    <input type="number" id="nombreHeureAnnuelle" value="#{assistantController.selected.nombreHeureAnnuelle}" title="#{bundle.CreateAssistantTitle_nombreHeureAnnuelle}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_nombreHeureAnnuelle}"/>
+                    
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_tauxEngagement}" for="tauxEngagement" />
-                    <h:inputText id="tauxEngagement" value="#{assistantController.selected.tauxEngagement}" title="#{bundle.CreateAssistantTitle_tauxEngagement}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_tauxEngagement}"/>
+                    <input type="number" id="tauxEngagement" value="#{assistantController.selected.tauxEngagement}" title="#{bundle.CreateAssistantTitle_tauxEngagement}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_tauxEngagement}"/>
+                    
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_tauxEnseignement}" for="tauxEnseignement" />
-                    <h:inputText id="tauxEnseignement" value="#{assistantController.selected.tauxEnseignement}" title="#{bundle.CreateAssistantTitle_tauxEnseignement}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_tauxEnseignement}"/>
+                    <input type="number" id="tauxEnseignement" value="#{assistantController.selected.tauxEnseignement}" title="#{bundle.CreateAssistantTitle_tauxEnseignement}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_tauxEnseignement}"/>
+                    
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_tauxTachesInternes}" for="tauxTachesInternes" />
-                    <h:inputText id="tauxTachesInternes" value="#{assistantController.selected.tauxTachesInternes}" title="#{bundle.CreateAssistantTitle_tauxTachesInternes}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_tauxTachesInternes}"/>
-                    <h:outputLabel value="#{bundle.CreateAssistantLabel_groupeId}" for="groupeId" />
-                    <h:selectOneMenu id="groupeId" value="#{assistantController.selected.groupeId}" title="#{bundle.CreateAssistantTitle_groupeId}" >
-                        <f:selectItems value="#{groupeCompetenceController.itemsAvailableSelectOne}"/>
+                    <input type="number" value="#{assistantController.selected.tauxTachesInternes}" title="#{bundle.CreateAssistantTitle_tauxTachesInternes}" id="tauxTachesInternes" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_tauxTachesInternes}"/>
+                    
+                    <h:outputLabel value="#{bundle.GroupeCompetenceName}" for="groupeCompet" />
+                    <h:selectOneMenu id="groupeCompet" converter="#{groupeCompetenceController}" value="#{groupeCompetenceController.selectedGroupeCompetence}">
+                        <f:selectItems value="#{groupeCompetenceController.items}" var="gc" itemLabel="#{gc.acronyme}" itemValue="#{gc}" />
                     </h:selectOneMenu>
+                    
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_login}" for="login" />
                     <h:inputText id="login" value="#{assistantController.selected.login}" title="#{bundle.CreateAssistantTitle_login}" required="true" requiredMessage="#{bundle.CreateAssistantRequiredMessage_login}"/>
                     <h:outputLabel value="#{bundle.CreateAssistantLabel_password}" for="password" />
