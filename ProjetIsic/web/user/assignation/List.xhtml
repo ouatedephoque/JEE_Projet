@@ -19,30 +19,24 @@
                     <h:outputText value="#{assignationController.pagination.pageFirstItem + 1}..#{assignationController.pagination.pageLastItem + 1}/#{assignationController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{assignationController.previous}" value="#{bundle.Previous} #{assignationController.pagination.pageSize}" rendered="#{assignationController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{assignationController.next}" value="#{bundle.Next} #{assignationController.pagination.pageSize}" rendered="#{assignationController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{assignationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable value="#{assignationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" class="striped">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssignationTitle_assignationId}"/>
+                                <h:outputText value="#{bundle.ListAssignationTitle_projetId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.assignationId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssignationTitle_tauxEngagmentProjet}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tauxEngagmentProjet}"/>
+                            <h:outputText value="#{item.projetId.nom}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssignationTitle_assistantId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.assistantId}"/>
+                            <h:outputText value="#{item.assistantId.nom.concat(' ').concat(item.assistantId.prenom)}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssignationTitle_projetId}"/>
+                                <h:outputText value="#{bundle.ListAssignationTitle_tauxEngagmentProjet}"/>
                             </f:facet>
-                            <h:outputText value="#{item.projetId}"/>
+                            <h:outputText value="#{item.tauxEngagmentProjet}%"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -50,17 +44,14 @@
                             </f:facet>
                             <h:commandLink action="#{assignationController.prepareView}" value="#{bundle.ListAssignationViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{assignationController.prepareEdit}" value="#{bundle.ListAssignationEditLink}"/>
+                            <h:commandLink action="#{assignationController.prepareEdit}" value="#{bundle.ListAssignationEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{assignationController.destroy}" value="#{bundle.ListAssignationDestroyLink}"/>
+                            <h:commandLink action="#{assignationController.destroy}" value="#{bundle.ListAssignationDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <a href="/ProjetIsic/faces/admin/assignation/Create.xhtml" value="">#{bundle.ListAssignationCreateLink}</a>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListAssignationIndexLink}"/>
+                <h:commandLink action="/faces/admin/assignation/Create.xhtml" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListAssignationCreateLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

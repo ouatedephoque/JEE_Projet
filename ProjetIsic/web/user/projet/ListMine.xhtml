@@ -22,13 +22,7 @@
                     <h:outputText value="#{projetController.pagination.pageFirstItem + 1}..#{projetController.pagination.pageLastItem + 1}/#{projetController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{projetController.previous}" value="#{bundle.Previous} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{projetController.next}" value="#{bundle.Next} #{projetController.pagination.pageSize}" rendered="#{projetController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{userAuthentification.assistant.assignationCollection}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProjetTitle_projetId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.projetId}"/>
-                        </h:column>
+                    <h:dataTable value="#{userAuthentification.assistant.assignationCollection}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" class="striped">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_nom}"/>
@@ -46,7 +40,7 @@
                                 <h:outputText value="#{bundle.ListProjetTitle_dateDebut}"/>
                             </f:facet>
                             <h:outputText value="#{item.projetId.dateDebut}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </h:column>
                         <h:column>
@@ -54,20 +48,8 @@
                                 <h:outputText value="#{bundle.ListProjetTitle_dateFin}"/>
                             </f:facet>
                             <h:outputText value="#{item.projetId.dateFin}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAssistant}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.projetId.tarifHoraireAssistant}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProjetTitle_tarifHoraireAdjoint}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.projetId.tarifHoraireAdjoint}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -79,25 +61,23 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProjetTitle_chef}"/>
                             </f:facet>
-                            <h:outputText value="#{item.chef}"/>
+                            <h:outputText value="#{item.projetId.chef}"/>
                         </h:column>
+                        
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{projetController.prepareView}" value="#{bundle.ListProjetViewLink}"/>
+                            <h:commandLink action="#{projetController.getMyProjectView(item.projetId)}" value="#{bundle.ListProjetViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.prepareEdit}" value="#{bundle.ListProjetEditLink}"/>
+                            <h:commandLink action="#{projetController.getMyProjectEdit(item.projetId)}" value="#{bundle.ListProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{projetController.destroy}" value="#{bundle.ListProjetDestroyLink}"/>
+                            <h:commandLink action="#{projetController.getMyProjectDestroy(item.projetId)}" value="#{bundle.ListProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <a href="/ProjetIsic/faces/admin/projet/Create.xhtml" class="waves-effect waves-light pink btn">#{bundle.ListProjetCreateLink}</a>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListProjetIndexLink}"/>
+                <h:commandLink action="/faces/admin/projet/Create.xhtml" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListProjetCreateLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

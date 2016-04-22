@@ -15,19 +15,17 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewProjetLabel_projetId}"/>
-                    <h:outputText value="#{projetController.selected.projetId}" title="#{bundle.ViewProjetTitle_projetId}"/>
                     <h:outputText value="#{bundle.ViewProjetLabel_nom}"/>
                     <h:outputText value="#{projetController.selected.nom}" title="#{bundle.ViewProjetTitle_nom}"/>
                     <h:outputText value="#{bundle.ViewProjetLabel_sagex}"/>
                     <h:outputText value="#{projetController.selected.sagex}" title="#{bundle.ViewProjetTitle_sagex}"/>
                     <h:outputText value="#{bundle.ViewProjetLabel_dateDebut}"/>
                     <h:outputText value="#{projetController.selected.dateDebut}" title="#{bundle.ViewProjetTitle_dateDebut}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewProjetLabel_dateFin}"/>
                     <h:outputText value="#{projetController.selected.dateFin}" title="#{bundle.ViewProjetTitle_dateFin}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewProjetLabel_tarifHoraireAssistant}"/>
                     <h:outputText value="#{projetController.selected.tarifHoraireAssistant}" title="#{bundle.ViewProjetTitle_tarifHoraireAssistant}"/>
@@ -39,18 +37,14 @@
                     <h:outputText value="#{projetController.selected.chef}" title="#{bundle.ViewProjetTitle_chef}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}"/>
+                <h:commandLink action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewProjetEditLink}"/>
+                <h:link outcome="#{projetController.getMyProjectEdit(projetController.selected)}" value="#{bundle.ViewProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
                 <br />
-                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ViewProjetCreateLink}" />
+                <h:commandLink action="#{projetController.prepareCreate}" value="#{bundle.ViewProjetCreateLink}" rendered="#{userAuthentification.assistant.admin}" />
                 <br />
                 <h:commandLink action="#{projetController.prepareList}" value="#{bundle.ViewProjetShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewProjetIndexLink}"/>
-
             </h:form>
         </ui:define>
     </ui:composition>

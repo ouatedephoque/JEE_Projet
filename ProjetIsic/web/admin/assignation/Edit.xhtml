@@ -31,12 +31,9 @@
                 <h:commandLink action="#{assignationController.update}" value="#{bundle.EditAssignationSaveLink}"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditAssignationViewLink}"/>
+                <h:link class="waves-effect waves-light pink btn" outcome="/faces/user/assignation/View.xhtml" value="#{bundle.EditAssignationViewLink}"/>
                 <br />
-                <h:commandLink action="#{assignationController.prepareList}" value="#{bundle.EditAssignationShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditAssignationIndexLink}" />
+                <h:commandLink class="waves-effect waves-light pink btn" action="#{assignationController.prepareList}" value="#{bundle.EditAssignationShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>

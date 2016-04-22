@@ -38,15 +38,13 @@
                     <h:outputLabel value="#{bundle.EditProjetLabel_chef}" for="chef" />
                     <h:inputText id="chef" value="#{projetController.selected.chef}" title="#{bundle.EditProjetTitle_chef}" />
                 </h:panelGrid>
-                <h:commandLink action="#{projetController.update}" value="#{bundle.EditProjetSaveLink}"/>
+                <h:commandLink class="waves-effect waves-light btn col s12" action="#{projetController.update}" value="#{bundle.EditProjetSaveLink}"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditProjetViewLink}"/>
-                <br />
-                <h:commandLink action="#{projetController.prepareList}" value="#{bundle.EditProjetShowAllLink}" immediate="true"/>
+                <h:link class="waves-effect waves-light btn col s12" outcome="/faces/user/projet/View" value="#{bundle.EditProjetViewLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.EditProjetIndexLink}" />
+                <h:commandLink class="waves-effect waves-light btn col s12" action="#{projetController.prepareList}" value="#{bundle.EditProjetShowAllLink}" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>
