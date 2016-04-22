@@ -17,32 +17,45 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditAssistantLabel_nom}" for="nom" />
                     <h:inputText id="nom" value="#{assistantController.selected.nom}" title="#{bundle.EditAssistantTitle_nom}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_nom}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_prenom}" for="prenom" />
                     <h:inputText id="prenom" value="#{assistantController.selected.prenom}" title="#{bundle.EditAssistantTitle_prenom}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_prenom}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_adresse}" for="adresse" />
                     <h:inputText id="adresse" value="#{assistantController.selected.adresse}" title="#{bundle.EditAssistantTitle_adresse}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_adresse}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_abreviation}" for="abreviation" />
                     <h:inputText id="abreviation" value="#{assistantController.selected.abreviation}" title="#{bundle.EditAssistantTitle_abreviation}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_abreviation}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_domaine}" for="domaine" />
                     <h:inputText id="domaine" value="#{assistantController.selected.domaine}" title="#{bundle.EditAssistantTitle_domaine}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_domaine}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_fonction}" for="fonction" />
                     <h:inputText id="fonction" value="#{assistantController.selected.fonction}" title="#{bundle.EditAssistantTitle_fonction}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_fonction}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_nombreHeureAnnuelle}" for="nombreHeureAnnuelle" />
                     <h:inputText id="nombreHeureAnnuelle" value="#{assistantController.selected.nombreHeureAnnuelle}" title="#{bundle.EditAssistantTitle_nombreHeureAnnuelle}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_nombreHeureAnnuelle}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_tauxEngagement}" for="tauxEngagement" />
                     <h:inputText id="tauxEngagement" value="#{assistantController.selected.tauxEngagement}" title="#{bundle.EditAssistantTitle_tauxEngagement}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_tauxEngagement}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_tauxEnseignement}" for="tauxEnseignement" />
                     <h:inputText id="tauxEnseignement" value="#{assistantController.selected.tauxEnseignement}" title="#{bundle.EditAssistantTitle_tauxEnseignement}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_tauxEnseignement}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_tauxTachesInternes}" for="tauxTachesInternes" />
                     <h:inputText id="tauxTachesInternes" value="#{assistantController.selected.tauxTachesInternes}" title="#{bundle.EditAssistantTitle_tauxTachesInternes}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_tauxTachesInternes}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_groupeId}" for="groupeId" />
                     <h:selectOneMenu id="groupeId" value="#{assistantController.selected.groupeId}" title="#{bundle.EditAssistantTitle_groupeId}" >
                         <f:selectItems value="#{groupeCompetenceController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_login}" for="login" />
                     <h:inputText id="login" value="#{assistantController.selected.login}" title="#{bundle.EditAssistantTitle_login}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_login}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_password}" for="password" />
                     <h:inputText id="password" value="#{assistantController.selected.password}" title="#{bundle.EditAssistantTitle_password}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_password}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAssistantLabel_email}" for="email" />
                     <h:inputText id="email" value="#{assistantController.selected.email}" title="#{bundle.EditAssistantTitle_email}" required="true" requiredMessage="#{bundle.EditAssistantRequiredMessage_email}"/>
                 </h:panelGrid>

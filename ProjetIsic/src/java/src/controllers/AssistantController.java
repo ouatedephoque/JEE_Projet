@@ -1,14 +1,11 @@
 package src.controllers;
 
-import src.entities.Assistant;
-import src.controllers.util.JsfUtil;
-import src.controllers.util.PaginationHelper;
-import src.facades.AssistantFacade;
-
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -23,7 +20,11 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import src.controllers.util.JsfUtil;
+import src.controllers.util.PaginationHelper;
+import src.entities.Assistant;
 import src.entities.GroupeCompetence;
+import src.facades.AssistantFacade;
 
 @ManagedBean(name = "assistantController")
 @SessionScoped
@@ -36,6 +37,8 @@ public class AssistantController implements Serializable, Converter {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private Assistant selectedAssistant;
+    
+    private DataModel itemsFunction = null;
 
     public AssistantController() {
     }
