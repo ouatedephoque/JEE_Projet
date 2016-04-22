@@ -156,9 +156,7 @@ public class ProjetController implements Serializable {
     }
 
     public DataModel getItems() {
-        if (items == null) {
-            items = getPagination().createPageDataModel();
-        }
+        items = getPagination().createPageDataModel();
         return items;
     }
 

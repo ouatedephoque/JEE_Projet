@@ -276,7 +276,7 @@ public class Assistant implements Serializable {
 
     @Override
     public String toString() {
-        return "src.entities.Assistant[ assistantId=" + assistantId + " ]";
+        return nom + " " + prenom;
     }
 
     public String getLogin() {

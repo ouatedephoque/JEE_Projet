@@ -11,12 +11,14 @@
         </ui:define>
         <ui:define name="body">
             <form method="POST" action="j_security_check"> 
-                <h:outputLabel for="j_username" value="Username" />
-                <h:inputText id="j_username" required="true" />
-                <br />
-                <h:outputLabel for="j_password" value="Password" />
-                <h:inputSecret id="j_password" required="true" />
-                <br />
+                <div class="input-field col s6">
+                    <input type="text" id="j_username" name="j_username" />
+                    <label for="j_username">Username</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="password" id="j_password" name="j_password" />
+                    <label for="j_username">Mot de passe</label>
+                </div>
                 <input type="submit" value="Login" class="waves-effect waves-light pink btn" />              
                 <input type="reset" value="Reset" class="waves-effect waves-light pink btn" />
             </form>

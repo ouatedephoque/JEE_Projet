@@ -65,17 +65,19 @@
                 <div class="row">
                     <div class="col l6 s12">
                         <h5 class="white-text">HE-Arc Ing. Planning</h5>
-                        <p class="grey-text text-lighten-4">Ici le texte de footer</p>
+                        <p class="grey-text text-lighten-4">Institut de recherche de St-Imier</p>
                     </div>
 
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Plan du site</h5>
                         <ul>
                             <li><a class="grey-text text-lighten-3" href="/index">Accueil</a></li>
-                            <li><a class="grey-text text-lighten-3" href="/projet/List">Mes projets</a></li>
-                            <li><a class="grey-text text-lighten-3" href="/projet/List">Gestion des projets</a></li>
-                            <li><a class="grey-text text-lighten-3" href="/assistant/List">Gestion des assistants</a></li>
-                            <li><a class="grey-text text-lighten-3" href="/assistant/List">Mon profil</a></li>
+                            <ui:fragment rendered="#{not empty request.remoteUser}">
+                                <li><a class="grey-text text-lighten-3" href="/user/projet/List">Mes projets</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/user/projet/List">Gestion des projets</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/user/assistant/List">Gestion des assistants</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/user/assistant/List">Mon profil</a></li>
+                            </ui:fragment>
                         </ul>
                     </div>
                 </div>
@@ -92,16 +94,6 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <h:outputScript library="js" name="materialize.js" />
         <h:outputScript library="js" name="materialize.min.js" />
-        <br />
-        <h:link outcome="/user/assistant/List" value="Show All Assistant Items"/>
-        <br />
-        <h:link outcome="/user/assignation/List" value="Show All Assignation Items"/>
-        <br />
-        <h:link outcome="/user/assistant/List" value="Show All Assistant Items"/>
-        <br />
-        <h:link outcome="/user/groupeCompetence/List" value="Show All GroupeCompetence Items"/>
-        <br />
-        <h:link outcome="/user/projet/List" value="Show All Projet Items"/>
         
         <script>
             $(document).ready(function() {

@@ -163,10 +163,7 @@ public class AssignationController implements Serializable, Converter {
 
     public DataModel getItems() 
     {
-        items = null;
-        if (items == null) {
-            items = getPagination().createPageDataModel();
-        }
+        items = getPagination().createPageDataModel();
         return items;
     }
 
