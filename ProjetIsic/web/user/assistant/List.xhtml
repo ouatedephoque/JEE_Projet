@@ -19,13 +19,7 @@
                     <h:outputText value="#{assistantController.pagination.pageFirstItem + 1}..#{assistantController.pagination.pageLastItem + 1}/#{assistantController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{assistantController.previous}" value="#{bundle.Previous} #{assistantController.pagination.pageSize}" rendered="#{assistantController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{assistantController.next}" value="#{bundle.Next} #{assistantController.pagination.pageSize}" rendered="#{assistantController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{assistantController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_assistantId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.assistantId}"/>
-                        </h:column>
+                    <h:dataTable value="#{assistantController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px" class="striped">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssistantTitle_nom}"/>
@@ -40,27 +34,9 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_adresse}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.adresse}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_abreviation}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.abreviation}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssistantTitle_domaine}"/>
                             </f:facet>
                             <h:outputText value="#{item.domaine}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_fonction}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fonction}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -72,37 +48,19 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssistantTitle_tauxEngagement}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tauxEngagement}"/>
+                            <h:outputText value="#{item.tauxEngagement}%"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssistantTitle_tauxEnseignement}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tauxEnseignement}"/>
+                            <h:outputText value="#{item.tauxEnseignement}%"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssistantTitle_tauxTachesInternes}"/>
                             </f:facet>
                             <h:outputText value="#{item.tauxTachesInternes}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_groupeId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.groupeId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_login}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.login}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_password}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.password}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

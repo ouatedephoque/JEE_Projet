@@ -21,11 +21,11 @@
                     <h:inputText id="sagex" value="#{projetController.selected.sagex}" title="#{bundle.CreateProjetTitle_sagex}" required="true" requiredMessage="#{bundle.CreateProjetRequiredMessage_sagex}"/>
                     <h:outputLabel value="#{bundle.CreateProjetLabel_dateDebut}" for="dateDebut" />
                     <h:inputText id="dateDebut" value="#{projetController.selected.dateDebut}" title="#{bundle.CreateProjetTitle_dateDebut}" required="true" requiredMessage="#{bundle.CreateProjetRequiredMessage_dateDebut}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateProjetLabel_dateFin}" for="dateFin" />
                     <h:inputText id="dateFin" value="#{projetController.selected.dateFin}" title="#{bundle.CreateProjetTitle_dateFin}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateProjetLabel_tarifHoraireAssistant}" for="tarifHoraireAssistant" />
                     <h:inputText id="tarifHoraireAssistant" value="#{projetController.selected.tarifHoraireAssistant}" title="#{bundle.CreateProjetTitle_tarifHoraireAssistant}" />
