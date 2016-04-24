@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -68,15 +70,24 @@ public class Projet implements Serializable {
     private Date dateDebut;
     @Column(name = "date_fin")
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
+    @Future
     private Date dateFin;
     @Column(name = "tarif_horaire_assistant")
+    @NotNull
+    @Min(0)
     private BigInteger tarifHoraireAssistant;
     @Column(name = "tarif_horaire_adjoint")
+    @NotNull
+    @Min(0)
     private BigInteger tarifHoraireAdjoint;
     @Column(name = "budget")
+    @NotNull
+    @Min(0)
     private BigInteger budget;
     @Size(max = 40)
     @Column(name = "chef")
+    @NotNull
     private String chef;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "projetId")
     private Collection<Assignation> assignationCollection;
