@@ -34,12 +34,6 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssistantTitle_adresse}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.adresse}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssistantTitle_email}"/>
                             </f:facet>
                             <h:outputText value="#{item.email}"/>
@@ -60,16 +54,22 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ActionTitle}"/>
                             </f:facet>
-                            <h:commandLink action="#{assistantController.prepareView}" value="#{bundle.ListAssistantViewLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{assistantController.prepareView}">
+                                <i class="small material-icons">pageview</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{assistantController.prepareEdit}" value="#{bundle.ListAssistantEditLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{assistantController.prepareEdit}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="small material-icons">mode_edit</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{assistantController.destroy}" value="#{bundle.ListAssistantDestroyLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{assistantController.destroy}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="small material-icons">delete</i>
+                            </h:commandLink>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <a href="/ProjetIsic/faces/admin/assistant/Create.xhtml" class="waves-effect waves-light pink btn">#{bundle.ListAssistantCreateLink}</a>
+                <h:commandLink action="#{assistantController.prepareCreate()}" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListAssistantCreateLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

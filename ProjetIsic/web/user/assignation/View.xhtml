@@ -14,7 +14,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewAssignationLabel_tauxEngagmentProjet}"/>
-                    <h:outputText value="#{assignationController.selected.tauxEngagmentProjet}" title="#{bundle.ViewAssignationTitle_tauxEngagmentProjet}%"/>
+                    <h:outputText value="#{assignationController.selected.tauxEngagmentProjet}%" title="#{bundle.ViewAssignationTitle_tauxEngagmentProjet}%"/>
                     <h:outputText value="#{bundle.ViewAssignationLabel_assistantId}"/>
                     <h:outputText value="#{assignationController.selected.assistantId.toString()}" title="#{bundle.ViewAssignationTitle_assistantId}"/>
                     <h:outputText value="#{bundle.ViewAssignationLabel_projetId}"/>
@@ -24,7 +24,7 @@
                 <h:commandLink class="waves-effect waves-light pink btn" action="#{projetController.destroyAndView}" value="#{bundle.ViewProjetDestroyLink}" rendered="#{userAuthentification.assistant.admin}"/>
                 <br />
                 <br />
-                <h:link class="waves-effect waves-light pink btn" outcome="#{assignationController.prepareEdit()}" value="#{bundle.ViewProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
+                <h:link class="waves-effect waves-light pink btn" outcome="#{assignationController.getMyAssignationEdit(assignationController.selected)}" value="#{bundle.ViewProjetEditLink}" rendered="#{userAuthentification.assistant.admin}"/>
             </h:form>
         </ui:define>
     </ui:composition>

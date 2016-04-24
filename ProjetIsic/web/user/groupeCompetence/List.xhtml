@@ -42,19 +42,22 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{groupeCompetenceController.prepareView}" value="#{bundle.ListGroupeCompetenceViewLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{groupeCompetenceController.prepareView}">
+                                <i class="large material-icons">pageview</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{groupeCompetenceController.prepareEdit}" value="#{bundle.ListGroupeCompetenceEditLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{groupeCompetenceController.prepareEdit}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="large material-icons">mode_edit</i>
+                            </h:commandLink>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{groupeCompetenceController.destroy}" value="#{bundle.ListGroupeCompetenceDestroyLink}"/>
+                            <h:commandLink class="waves-effect waves-light pink btn" action="#{groupeCompetenceController.destroy}" rendered="#{userAuthentification.assistant.admin}">
+                                <i class="large material-icons">delete</i>
+                            </h:commandLink>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <a href="/ProjetIsic/faces/admin/groupeCompetence/Create.xhtml" class="waves-effect waves-light pink btn">#{bundle.ListGroupeCompetenceCreateLink}</a>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListGroupeCompetenceIndexLink}"/>
+                <h:commandLink action="#{groupeCompetenceController.prepareCreate()}" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListAssistantCreateLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

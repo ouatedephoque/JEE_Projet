@@ -83,7 +83,7 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="/faces/admin/projet/Create.xhtml" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListProjetCreateLink}" />
+                <h:commandLink action="#{projetController.prepareCreate()}" class="waves-effect waves-light pink btn" rendered="#{userAuthentification.assistant.admin}" value="#{bundle.ListProjetCreateLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

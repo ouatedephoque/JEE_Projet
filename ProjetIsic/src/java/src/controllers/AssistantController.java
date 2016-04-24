@@ -75,26 +75,27 @@ public class AssistantController implements Serializable, Converter {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        items = getItems();
+        return "/user/assistant/List";
     }
 
     public String prepareView() {
         current = (Assistant) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/user/assistant/View";
     }
 
     public String prepareCreate() {
         current = new Assistant();
         selectedItemIndex = -1;
-        return "Create";
+        return "/admin/assistant/Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AssistantCreated"));
-            return prepareCreate();
+            return prepareList();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -104,14 +105,14 @@ public class AssistantController implements Serializable, Converter {
     public String prepareEdit() {
         current = (Assistant) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+        return "/admin/assistant/Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AssistantUpdated"));
-            return "View";
+            return "/user/assistant/View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -124,7 +125,7 @@ public class AssistantController implements Serializable, Converter {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/user/assistant/List";
     }
 
     public String destroyAndView() {
@@ -132,11 +133,11 @@ public class AssistantController implements Serializable, Converter {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/user/assistant/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/user/assistant/List";
         }
     }
 
@@ -164,8 +165,10 @@ public class AssistantController implements Serializable, Converter {
         }
     }
 
-    public DataModel getItems() {
-        if (items == null) {
+    public DataModel getItems() 
+    {
+        if(items == null)
+        {
             items = getPagination().createPageDataModel();
         }
         return items;
@@ -182,13 +185,13 @@ public class AssistantController implements Serializable, Converter {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/user/assistant/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/user/assistant/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

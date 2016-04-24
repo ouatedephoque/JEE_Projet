@@ -24,6 +24,7 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import src.entities.Assistant;
 import src.entities.GroupeCompetence;
+import src.entities.Projet;
 
 @ManagedBean(name = "assignationController")
 @SessionScoped
@@ -84,14 +85,14 @@ public class AssignationController implements Serializable, Converter {
     public String prepareCreate() {
         current = new Assignation();
         selectedItemIndex = -1;
-        return "/user/assignation/List";
+        return "/admin/assignation/Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AssignationCreated"));
-            return prepareCreate();
+            return prepareList();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -163,7 +164,10 @@ public class AssignationController implements Serializable, Converter {
 
     public DataModel getItems() 
     {
-        items = getPagination().createPageDataModel();
+        if(items == null)
+        {
+            items = getPagination().createPageDataModel();
+        }
         return items;
     }
 
@@ -258,6 +262,15 @@ public class AssignationController implements Serializable, Converter {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Assignation.class.getName());
             }
         }
+    }
+    
+    public String getMyAssignationEdit(Assignation assignation)
+    {
+        if(current == null)
+        {
+            current = assignation;
+        }
+        return "/admin/assignation/Edit";
     }
 
 }

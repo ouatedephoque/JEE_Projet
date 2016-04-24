@@ -18,6 +18,7 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 @ManagedBean(name = "projetController")
 @SessionScoped
@@ -66,26 +67,27 @@ public class ProjetController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        items = getItems();
+        return "/user/projet/List";
     }
 
     public String prepareView() {
         current = (Projet) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "/user/projet/View";
     }
 
     public String prepareCreate() {
         current = new Projet();
         selectedItemIndex = -1;
-        return "/user/projet/List";
+        return "/admin/projet/Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ProjetCreated"));
-            return prepareCreate();
+            return prepareList();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -115,7 +117,8 @@ public class ProjetController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        current = null;
+        return "/user/projet/List";
     }
 
     public String destroyAndView() {
@@ -123,11 +126,11 @@ public class ProjetController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "/user/projet/View";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "/user/projet/List";
         }
     }
 
@@ -155,8 +158,12 @@ public class ProjetController implements Serializable {
         }
     }
 
-    public DataModel getItems() {
-        items = getPagination().createPageDataModel();
+    public DataModel getItems() 
+    {
+        if(items == null)
+        {
+            items = getPagination().createPageDataModel();
+        }
         return items;
     }
 
@@ -171,13 +178,13 @@ public class ProjetController implements Serializable {
     public String next() {
         getPagination().nextPage();
         recreateModel();
-        return "List";
+        return "/user/projet/List";
     }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
-        return "List";
+        return "/user/projet/List";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
@@ -238,10 +245,7 @@ public class ProjetController implements Serializable {
     
     public String getMyProjectView(Projet projet)
     {
-        if(current == null)
-        {
-            current = projet;
-        }
+        current = projet;
         return "/user/projet/View";
     }
     
@@ -263,7 +267,7 @@ public class ProjetController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "/user/projet/List";
     }
     
     public String getProjectFromProfile(Projet projet)
