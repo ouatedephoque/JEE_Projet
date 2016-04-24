@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -39,6 +41,8 @@ public class Assignation implements Serializable {
     @Column(name = "assignation_id")
     private Integer assignationId;
     @Column(name = "taux_engagment_projet")
+    @Max(100)
+    @Min(0)
     private Integer tauxEngagmentProjet;
     @JoinColumn(name = "assistant_id", referencedColumnName = "assistant_id")
     @ManyToOne(optional = false)

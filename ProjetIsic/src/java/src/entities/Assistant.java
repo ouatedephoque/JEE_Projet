@@ -23,7 +23,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -59,6 +62,10 @@ public class Assistant implements Serializable {
     @NotNull
     @Size(min = 1, max = 80)
     @Column(name = "email")
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+        +"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+        +"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+             message="Insérer une adresse e-mail valide")
     private String email;
     @Basic(optional = false)
     @NotNull
@@ -109,18 +116,26 @@ public class Assistant implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "nombre_heure_annuelle")
+    @Max(1200)
+    @Min(0)
     private int nombreHeureAnnuelle;
     @Basic(optional = false)
     @NotNull
     @Column(name = "taux_engagement")
+    @Max(100)
+    @Min(0)
     private int tauxEngagement;
     @Basic(optional = false)
     @NotNull
     @Column(name = "taux_enseignement")
+    @Max(100)
+    @Min(0)
     private int tauxEnseignement;
     @Basic(optional = false)
     @NotNull
     @Column(name = "taux_taches_internes")
+    @Max(100)
+    @Min(0)
     private int tauxTachesInternes;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "assistantId")
     private Collection<Assignation> assignationCollection;
