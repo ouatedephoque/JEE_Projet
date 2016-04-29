@@ -33,10 +33,11 @@
                 <ul class="right hide-on-med-and-down">
                     <li><h:link outcome="/index" value="Accueil"/></li>
                     <ui:fragment rendered="#{not empty request.remoteUser}">
-                        <li><h:link outcome="/user/projet/ListMine" value="Mes projets"/></li>
-                        <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
-                        <li><h:link outcome="/user/assignation/List" value="Assignation projet"/></li>
-                        <li><h:link outcome="/user/assistant/List" value="Gestion des assistants"/></li>
+                        <li><h:link outcome="/user/projet/List" value="Mes projets"/></li>
+                        <li><h:link outcome="/user/projet/List" value="Projets"/></li>
+                        <li><h:link outcome="/user/assignation/List" value="Assignation"/></li>
+                        <li><h:link outcome="/user/assistant/List" value="Assistants"/></li>
+                        <li><h:link outcome="/user/groupeCompetence/List" value="Groupes de compétence"/></li>
                         <li><h:link outcome="#{assistantController.getMyProfil()}" value="Mon profil"/></li>
                     </ui:fragment>
                 </ul>
@@ -44,9 +45,10 @@
                     <li><h:link outcome="/index" value="Accueil"/></li>
                     <ui:fragment rendered="#{not empty request.remoteUser}">
                         <li><h:link outcome="/user/projet/List" value="Mes projets"/></li>
-                        <li><h:link outcome="/user/projet/List" value="Gestion des projets"/></li>
-                        <li><h:link outcome="/user/assignation/List" value="Assignation projet"/></li>
-                        <li><h:link outcome="/user/assistant/List" value="Gestion des assistants"/></li>
+                        <li><h:link outcome="/user/projet/List" value="Projets"/></li>
+                        <li><h:link outcome="/user/assignation/List" value="Assignation"/></li>
+                        <li><h:link outcome="/user/assistant/List" value="Assistants"/></li>
+                        <li><h:link outcome="/user/groupeCompetence/List" value="Groupes de compétence"/></li>
                         <li><h:link outcome="#{assistantController.getMyProfil()}" value="Mon profil"/></li>
                     </ui:fragment>
                 </ul>
@@ -79,6 +81,7 @@
                                 <li><h:link outcome="/user/projet/List" class="grey-text text-lighten-3" value="Gestion des projets"/></li>
                                 <li><h:link outcome="/user/assignation/List" class="grey-text text-lighten-3" value="Assignation projet"/></li>
                                 <li><h:link outcome="/user/assistant/List" class="grey-text text-lighten-3" value="Gestion des assistants"/></li>
+                                <li><h:link outcome="/user/groupeCompetence/List" class="grey-text text-lighten-3" value="Gestion des groupes de compétence"/></li>
                                 <li><h:link outcome="#{assistantController.getMyProfil()}" class="grey-text text-lighten-3" value="Mon profil"/></li>
                             </ui:fragment>
                         </ul>
